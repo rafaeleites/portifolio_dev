@@ -56,7 +56,20 @@
   .intro::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(40% 50% at 85% 20%, rgb(var(--indigo) / .09), transparent 70%), radial-gradient(35% 45% at 5% 0%, rgb(240 80 26 / .07), transparent 70%) }
   .pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .8rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-size: .85rem; font-weight: 700; color: var(--ink) }
   .pill b { width: .5rem; height: .5rem; border-radius: 99px; background: rgb(var(--green)) }
-  .intro h1 { margin-top: 1.2rem; max-width: 52rem; font-size: clamp(2.4rem, 5.2vw, 4.2rem); font-weight: 800; line-height: 1 }
+  .intro h1 { max-width: 52rem; font-size: clamp(2.4rem, 4.6vw, 3.9rem); font-weight: 800; line-height: 1 }
+  .topo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; align-items: center }
+  @media (min-width: 1024px) { .topo { grid-template-columns: 1.25fr .75fr; gap: 3rem } }
+
+  /* Órbita dos projetos (atalhos) */
+  .orbit { position: relative; width: min(100%, 25rem); aspect-ratio: 1; margin-inline: auto }
+  .orbit .ring { position: absolute; inset: 9%; border-radius: 50%; border: 1px dashed #c9cee2 }
+  .orbit .ring.r2 { inset: 27%; border-style: solid; border-color: var(--line) }
+  .orbit .core { position: absolute; inset: 37%; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.2rem); box-shadow: 0 20px 50px -20px rgb(13 20 48 / .6), 0 0 0 10px rgb(13 20 48 / .05) }
+  .orbit a { position: absolute; display: flex; flex-direction: column; align-items: center; gap: .35rem; width: 7.5rem; margin: -1.6rem 0 0 -3.75rem; text-decoration: none; text-align: center; font-size: .8rem; font-weight: 700; color: var(--ink); line-height: 1.2 }
+  .orbit a span { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 14px; background: var(--surface); color: rgb(var(--a)); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35), 0 10px 24px -14px rgb(var(--a) / .8); transition: transform .3s var(--ease) }
+  .orbit a:hover span { transform: translateY(-3px) }
+  .orbit svg { width: 20px; height: 20px }
+  @media (max-width: 699px) { .orbit { display: none } }
   .intro h1 em { font-style: normal; color: var(--ember) }
   .intro .lead { margin-top: 1.4rem; max-width: 44rem; font-size: 1.12rem; color: var(--text) }
   .intro .cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem }
@@ -103,7 +116,9 @@
   .svc .lead { margin-top: .9rem; max-width: 34rem; font-size: 1.02rem; color: var(--text) }
   .svc .result { margin-top: 1.1rem; padding: .75rem 1rem; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px rgb(var(--a) / .3); font-weight: 600; color: var(--ink) }
   .svc .result small { display: block; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--a-ink) }
-  .mais { margin-top: 1.1rem; min-height: 2.75rem; padding: 0 1.15rem; font-size: .92rem }
+  .mais { margin-top: 1.1rem; min-height: 2.75rem; padding: 0 1.2rem; font-size: .92rem }
+  .btn.mais { background: var(--a-ink); color: #fff; box-shadow: 0 12px 26px -14px rgb(var(--a) / .9) }
+  .btn.mais:hover { background: color-mix(in srgb, rgb(var(--a)) 55%, #000) }
   .stack { display: flex; flex-wrap: wrap; gap: .35rem }
   .stack span { font-size: .78rem; font-weight: 700; padding: .2rem .6rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); color: var(--text) }
 
@@ -255,12 +270,24 @@
 <main>
   <section class="intro">
     <div class="wrap">
-      <span class="pill" data-reveal><b></b>Programa de Estágio GenAI iFood · trilha AI Builder</span>
+      <div class="topo">
+      <div>
       <h1 data-reveal style="--d:60ms">Construo com IA sistemas que <em>já estão em uso</em> por negócios reais</h1>
       <p class="lead" data-reveal style="--d:120ms">Estudo Ciência da Computação na Unifor e, pela minha empresa, a Smart Tech, construo automações, agentes e produtos com IA para clientes. Cada projeto abaixo mostra o problema, o que eu construí, onde a IA entra e como mantenho tudo sob controle.</p>
       <div class="cta" data-reveal style="--d:180ms">
         <a class="btn btn-ember" href="#projetos">Ver os projetos <svg><use href="#i-arrow"/></svg></a>
         <a class="btn btn-ghost" href="https://github.com/rafaeleites" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      </div>
+      <div class="orbit" data-reveal style="--d:200ms" aria-label="Atalhos para os projetos">
+        <div class="ring"></div><div class="ring r2"></div>
+        <div class="core">RL</div>
+        <a href="#my-italy-os" style="left:50%;top:9%;--a:var(--indigo)"><span><svg><use href="#i-kanban"/></svg></span>My Italy OS</a>
+        <a href="#instagram" style="left:89%;top:38%;--a:var(--green)"><span><svg><use href="#i-chat"/></svg></span>Automação de Instagram</a>
+        <a href="#smart-reply" style="left:74%;top:86%;--a:var(--orange)"><span><svg><use href="#i-route"/></svg></span>Smart Reply</a>
+        <a href="#smart-lead" style="left:26%;top:86%;--a:var(--violet)"><span><svg><use href="#i-search"/></svg></span>Smart Lead</a>
+        <a href="#agentes" style="left:11%;top:38%;--a:var(--teal)"><span><svg><use href="#i-bot"/></svg></span>Múltiplos agentes</a>
+      </div>
       </div>
 
       <nav class="map" id="projetos" aria-label="Projetos" data-reveal style="--d:240ms">
@@ -284,8 +311,8 @@
         <h2 data-reveal><em>My Italy OS</em></h2>
         <p class="sub" data-reveal>CRM com IA para uma assessoria de casamentos em Roma</p>
         <p class="tag">Cliente real · React + Supabase + Claude API</p>
-        <p class="lead" data-reveal style="--d:80ms">A dona tinha desistido do ClickUp. Construí um sistema com uma ação principal por tela, e a IA cuida do trabalho de texto e documento.</p>
-        <div class="result" data-reveal><small>Destaque</small>A IA lê o contrato do fornecedor e transforma os prazos em tarefas do checklist, com a equipe revisando.</div>
+        <p class="lead" data-reveal style="--d:80ms">A dona qualificava cada lead à mão e negociava tudo com os noivos por e-mail. Hoje a plataforma qualifica sozinha, deixa os e-mails prontos e liga a equipe direto aos noivos.</p>
+        <div class="result" data-reveal><small>Antes e depois</small>Lead qualificado sozinho (orçamento por convidado, local e data) e e-mail pronto, só para revisar e enviar.</div>
         <button class="btn btn-ghost mais" type="button" data-abre="det-my-italy-os">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
@@ -365,10 +392,12 @@
             <p class="demo-note">O tempo é o do teste ao vivo, do comentário até a DM chegar.</p>
           </div>
           <div class="ui" data-for="catalogo">
-            <div class="ut">Catálogo do robô<em>2 peças ativas</em></div>
+            <div class="ut">Catálogo do robô<em>15 produtos cadastrados</em></div>
             <div class="row"><span><b>Kimono Crochê</b><small>Único · Branco, Cru</small></span><span class="num">R$ 149,00</span></div>
             <div class="row"><span><b>Vestido Linho</b><small>P ao GG · Areia</small></span><span class="chip hot">Esgotado</span></div>
-            <p class="demo-note">A equipe cadastra a peça a partir do próprio post ou story.</p>
+            <div class="row"><span><b>Blusa Ombro a Ombro</b><small>P ao G · Off-white, Terracota</small></span><span class="num">R$ 79,90</span></div>
+            <div class="row"><span>+ 12 produtos</span><span class="chip">ligados a posts e stories</span></div>
+            <p class="demo-note">A equipe cadastra cada peça a partir do próprio post ou story, e a DM sai com o produto certo.</p>
           </div>
           <div class="ui" data-for="fila">
             <div class="ut">Fila de atendimento humano<em>atualiza a cada 15 s</em></div>
@@ -555,14 +584,14 @@
   <dialog class="det" id="det-my-italy-os" aria-labelledby="t-my-italy-os" style="--a:var(--indigo)">
     <div class="hd"><div><small>Projeto 01</small><h3 id="t-my-italy-os">My Italy OS</h3><p>CRM com IA para uma assessoria de casamentos em Roma</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
     <div class="bd">
-      <div class="full"><h4>O problema</h4><p>A assessoria organiza cerca de 15 casamentos por ano, com 10 a 15 fornecedores cada. A dona tinha desistido do ClickUp por ser complexo demais.</p></div>
+      <div class="full"><h4>O problema</h4><p>A assessoria organiza cerca de 15 casamentos por ano, com 10 a 15 fornecedores cada. A dona qualificava cada lead à mão: conferia se o orçamento por convidado batia com o mínimo da assessoria e se o local e a data eram viáveis. Os e-mails eram escritos um a um, e toda a negociação com os noivos (propostas, aprovações e pagamentos) acontecia por e-mail.</p></div>
       <div><h4>O que construí</h4><ul>
-        <li>Funil de leads com qualificação automática</li>
-        <li>Roteiro oficial de 14 fases e marcos M-6 a M-1</li>
-        <li>Contratação de fornecedores, sempre com "com quem está a bola"</li>
-        <li>Financeiro com parcelas, lembretes e atrasos</li>
-        <li>Portal dos noivos em PT/EN</li>
-        <li>Integração com Gmail, Drive e Agenda</li>
+        <li>Qualificação automática do lead por orçamento por convidado, local e data (fit ideal, avaliar ou fora do perfil)</li>
+        <li>E-mails prontos, só para a equipe revisar e enviar</li>
+        <li>Caixa de mensagens integrada à plataforma, ligada ao Gmail</li>
+        <li>Portal dos noivos (PT/EN) ligado à plataforma da equipe: propostas, aprovações, pagamentos e tarefas, sem ida e volta por e-mail</li>
+        <li>Roteiro oficial de 14 fases, contratação de fornecedores e financeiro</li>
+        <li>Integração com Drive e Agenda</li>
       </ul></div>
       <div><h4>Onde entra a IA</h4><ul>
         <li>Lê a proposta em PDF e preenche o cadastro (Claude Sonnet)</li>
@@ -589,7 +618,7 @@
         <li>Um fluxo no n8n que recebe todo evento do Instagram (comentário, story, anúncio e DM) e identifica a origem e a intenção</li>
         <li>Resposta pública com variações e atraso para parecer humana</li>
         <li>DM com o produto daquele post, puxado do catálogo (preço, tamanhos, cores, esgotado) e com botões de compra</li>
-        <li>Painel de catálogo que a equipe edita a partir dos próprios posts e stories</li>
+        <li>Painel de catálogo, hoje com 15 produtos, que a equipe edita a partir dos próprios posts e stories</li>
         <li>Fila de atendimento humano que prioriza quem tocou em "Comprar agora", com tempo de espera e filtros</li>
       </ul></div>
       <div><h4>Onde entra a IA</h4><ul>
