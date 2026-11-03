@@ -72,7 +72,10 @@
   .orbit { position: relative; width: min(100%, 25rem); aspect-ratio: 1; margin-inline: auto }
   .orbit .ring { position: absolute; inset: 9%; border-radius: 50%; border: 1px dashed #c9cee2 }
   .orbit .ring.r2 { inset: 27%; border-style: solid; border-color: var(--line) }
-  .orbit .core { position: absolute; inset: 37%; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-family: var(--display); font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.2rem); box-shadow: 0 20px 50px -20px rgb(13 20 48 / .6), 0 0 0 10px rgb(13 20 48 / .05) }
+  .orbit .core { position: absolute; inset: 36%; border-radius: 50%; display: grid; place-items: center; background: var(--ink); box-shadow: 0 20px 50px -20px rgb(13 20 48 / .6), 0 0 0 10px rgb(13 20 48 / .05) }
+  .orbit .core img { width: 68%; height: auto }
+  .orbit a.on span { transform: translateY(-3px); box-shadow: inset 0 0 0 1.5px rgb(var(--a) / .8), 0 14px 28px -14px rgb(var(--a)) }
+  .orbit .dica { position: absolute; left: 0; right: 0; bottom: -1.6rem; text-align: center; font-size: .78rem; color: var(--soft) }
   .orbit a { position: absolute; display: flex; flex-direction: column; align-items: center; gap: .35rem; width: 7.5rem; margin: -1.6rem 0 0 -3.75rem; text-decoration: none; text-align: center; font-size: .8rem; font-weight: 700; color: var(--ink); line-height: 1.2 }
   .orbit a span { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 14px; background: var(--surface); color: rgb(var(--a)); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35), 0 10px 24px -14px rgb(var(--a) / .8); transition: transform .3s var(--ease) }
   .orbit a:hover span { transform: translateY(-3px) }
@@ -85,20 +88,22 @@
   /* Índice dos projetos */
   .map { margin-top: 3.5rem }
   .map h2 { font-size: .8rem; font-family: var(--sans); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--soft) }
-  .map ol { display: grid; gap: .6rem; margin-top: .9rem; list-style: none }
-  .map a { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .35rem 1rem; align-items: center; padding: .95rem 1.1rem; border-radius: 16px; background: var(--surface); box-shadow: 0 0 0 1px var(--line); text-decoration: none; transition: box-shadow .3s, transform .3s var(--ease) }
-  .map a:hover { box-shadow: 0 0 0 1px rgb(var(--a) / .55), 0 16px 36px -28px rgb(var(--a) / .9); transform: translateY(-1px) }
-  .map .ic { grid-row: span 2; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
-  .map .ic svg { width: 18px; height: 18px }
-  .map .nm { font-weight: 800; color: var(--ink); line-height: 1.3 }
-  .map .nm small { display: block; font-weight: 600; font-size: .9rem; color: var(--text) }
-  .map .tags { display: flex; flex-wrap: wrap; gap: .35rem }
-  .map .tags span { font-size: .74rem; font-weight: 800; padding: .15rem .55rem; border-radius: 99px; background: var(--bg); color: var(--ink) }
-  @media (min-width: 900px) {
-    .map a { grid-template-columns: 2.6rem minmax(0, 1fr) minmax(0, 1.1fr) }
-    .map .ic { grid-row: auto }
-    .map .tags { justify-content: flex-end }
-  }
+  .map ol { display: grid; grid-template-columns: minmax(0, 1fr); gap: .8rem; margin-top: .9rem; list-style: none }
+  @media (min-width: 640px) { .map ol { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+  @media (min-width: 1024px) { .map ol { grid-template-columns: repeat(6, minmax(0, 1fr)) } .map li { grid-column: span 2 } .map li:nth-child(4) { grid-column: 2 / span 2 } }
+  .map li { display: flex }
+  .map a { display: flex; flex-direction: column; gap: .45rem; width: 100%; padding: 1.1rem 1.2rem; border-radius: 18px; background: var(--surface); box-shadow: 0 0 0 1px var(--line); text-decoration: none; transition: box-shadow .3s, transform .3s var(--ease), opacity .3s }
+  .map a:hover, .map a.acende { box-shadow: 0 0 0 1.5px rgb(var(--a) / .65), 0 18px 40px -28px rgb(var(--a) / .9); transform: translateY(-2px) }
+  .map.filtro a:not(.acende) { opacity: .35 }
+  .map .hd { display: flex; align-items: center; gap: .7rem }
+  .map .ic { display: grid; place-items: center; flex-shrink: 0; width: 2.4rem; height: 2.4rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
+  .map .ic svg { width: 17px; height: 17px }
+  .map .hd b { font-size: 1.05rem; font-weight: 800; color: var(--ink); line-height: 1.25 }
+  .map .oq { font-size: .9rem; color: var(--text) }
+  .map strong { font-size: 1rem; font-weight: 800; line-height: 1.35; color: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
+  .map .vp { display: inline-flex; align-items: center; gap: .3rem; margin-top: auto; padding-top: .3rem; font-size: .84rem; font-weight: 700; color: var(--soft) }
+  .map .vp svg { width: 14px; height: 14px }
+  .map a:hover .vp { color: var(--ink) }
 
   /* Blocos dos projetos: o essencial cabe numa tela; o resto fica em "Ver detalhes do projeto" */
   .svc { position: relative; isolation: isolate; padding: 3.5rem 0; --a-ink: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
@@ -260,6 +265,8 @@
   <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h6.5a3.5 3.5 0 0 0 0-7h-5a3.5 3.5 0 0 1 0-7H16"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 </svg>
 
@@ -287,25 +294,26 @@
         <a class="btn btn-ghost" href="https://github.com/rafaeleites" target="_blank" rel="noopener">GitHub</a>
       </div>
       </div>
-      <div class="orbit" data-reveal style="--d:200ms" aria-label="Atalhos para os projetos">
+      <div class="orbit" data-reveal style="--d:200ms" aria-label="Competências da trilha AI Builder">
         <div class="ring"></div><div class="ring r2"></div>
-        <div class="core">RL</div>
-        <a href="#my-italy-os" style="left:50%;top:9%;--a:var(--indigo)"><span><svg><use href="#i-kanban"/></svg></span>My Italy OS</a>
-        <a href="#instagram" style="left:89%;top:38%;--a:var(--green)"><span><svg><use href="#i-chat"/></svg></span>Automação de Instagram</a>
-        <a href="#smart-reply" style="left:74%;top:86%;--a:var(--orange)"><span><svg><use href="#i-route"/></svg></span>Smart Reply</a>
-        <a href="#smart-lead" style="left:26%;top:86%;--a:var(--violet)"><span><svg><use href="#i-search"/></svg></span>Smart Lead</a>
-        <a href="#agentes" style="left:11%;top:38%;--a:var(--teal)"><span><svg><use href="#i-bot"/></svg></span>Múltiplos agentes</a>
+        <div class="core"><img src="img/smarttech-icone.png" alt="Smart Tech" width="172" height="168"></div>
+        <a href="#projetos" data-skill="prompt" style="left:50%;top:9%;--a:var(--indigo)"><span><svg><use href="#i-chat"/></svg></span>Prompt engineering</a>
+        <a href="#projetos" data-skill="agentes" style="left:89%;top:38%;--a:var(--teal)"><span><svg><use href="#i-bot"/></svg></span>Time de agentes</a>
+        <a href="#projetos" data-skill="automacoes" style="left:74%;top:86%;--a:var(--green)"><span><svg><use href="#i-flow"/></svg></span>Automações</a>
+        <a href="#projetos" data-skill="apis" style="left:26%;top:86%;--a:var(--orange)"><span><svg><use href="#i-plug"/></svg></span>APIs e integrações</a>
+        <a href="#projetos" data-skill="dados" style="left:11%;top:38%;--a:var(--violet)"><span><svg><use href="#i-chart"/></svg></span>Dados com IA</a>
+        <p class="dica">Passe o mouse para ver onde cada uma aparece</p>
       </div>
       </div>
 
       <nav class="map" id="projetos" aria-label="Projetos" data-reveal style="--d:240ms">
-        <h2>Os projetos e o que cada um mostra</h2>
+        <h2>Os projetos e o que cada um entrega</h2>
         <ol>
-          <li><a href="#my-italy-os" style="--a:var(--indigo)"><span class="ic"><svg><use href="#i-kanban"/></svg></span><span class="nm">My Italy OS<small>CRM com IA para uma assessoria de casamentos em Roma</small></span><span class="tags"><span>Prompt engineering</span><span>Construído com Claude Code</span><span>Revisão humana</span></span></a></li>
-          <li><a href="#instagram" style="--a:var(--green)"><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="nm">Automação de Instagram<small>n8n em produção na Cubana, loja de moda com 230 mil seguidores</small></span><span class="tags"><span>n8n</span><span>LLM que qualifica no Direct</span><span>Resultado medido</span></span></a></li>
-          <li><a href="#smart-reply" style="--a:var(--orange)"><span class="ic"><svg><use href="#i-route"/></svg></span><span class="nm">Smart Reply<small>A automação virou produto para várias lojas</small></span><span class="tags"><span>Produto do zero</span><span>API oficial da Meta</span><span>Em produção</span></span></a></li>
-          <li><a href="#smart-lead" style="--a:var(--violet)"><span class="ic"><svg><use href="#i-search"/></svg></span><span class="nm">Smart Lead<small>Agente que encontra e qualifica clientes</small></span><span class="tags"><span>Agente de IA</span><span>Análise de dados</span><span>Custo de IA</span></span></a></li>
-          <li><a href="#agentes" style="--a:var(--teal)"><span class="ic"><svg><use href="#i-bot"/></svg></span><span class="nm">Múltiplos agentes<small>Cada um com uma função, e travas para nenhum fazer estrago</small></span><span class="tags"><span>Claude, GPT e Gemini</span><span>MCP</span><span>Segurança</span></span></a></li>
+          <li><a href="#my-italy-os" data-skills="prompt apis dados" style="--a:var(--indigo)"><span class="hd"><span class="ic"><svg><use href="#i-kanban"/></svg></span><b>My Italy OS</b></span><span class="oq">CRM com IA para uma assessoria de casamentos em Roma</span><strong>Lê contratos em PDF e monta o checklist sozinho</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#instagram" data-skills="prompt automacoes apis" style="--a:var(--green)"><span class="hd"><span class="ic"><svg><use href="#i-chat"/></svg></span><b>Automação de Instagram</b></span><span class="oq">n8n numa loja de moda com 230 mil seguidores</span><strong>DM com o produto do post em cerca de 15 s</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#smart-reply" data-skills="automacoes apis" style="--a:var(--orange)"><span class="hd"><span class="ic"><svg><use href="#i-route"/></svg></span><b>Smart Reply</b></span><span class="oq">SaaS de automação de Instagram para várias lojas</span><strong>Aprovado pela Meta na primeira análise</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#smart-lead" data-skills="prompt agentes dados" style="--a:var(--violet)"><span class="hd"><span class="ic"><svg><use href="#i-search"/></svg></span><b>Smart Lead</b></span><span class="oq">Agente de prospecção com o Claude</span><strong>Ficha de venda e site demo em cerca de 1 minuto por lead</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#agentes" data-skills="agentes" style="--a:var(--teal)"><span class="hd"><span class="ic"><svg><use href="#i-bot"/></svg></span><b>Múltiplos agentes</b></span><span class="oq">Time de IA com papéis e travas de segurança</span><strong>Nada chega à produção sem revisão</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
         </ol>
       </nav>
     </div>
@@ -780,6 +788,19 @@
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) go(idx + (dx < 0 ? 1 : -1))
     }, { passive: true })
     go(0, false, false)
+  })
+
+  // Órbita: passar o mouse (ou focar) numa competência acende os cards dos projetos que a usam
+  const mapa = document.querySelector('.map')
+  const cartoes = [...mapa.querySelectorAll('a[data-skills]')]
+  document.querySelectorAll('.orbit a[data-skill]').forEach((n) => {
+    const liga = () => {
+      mapa.classList.add('filtro'); n.classList.add('on')
+      cartoes.forEach((c) => c.classList.toggle('acende', c.dataset.skills.split(' ').includes(n.dataset.skill)))
+    }
+    const desliga = () => { mapa.classList.remove('filtro'); n.classList.remove('on'); cartoes.forEach((c) => c.classList.remove('acende')) }
+    n.addEventListener('pointerenter', liga); n.addEventListener('focus', liga)
+    n.addEventListener('pointerleave', desliga); n.addEventListener('blur', desliga)
   })
 
   // "Ver detalhes do projeto": abre o modal; fecha no ×, no Esc ou clicando fora. Ao fechar, o foco volta ao botão.
