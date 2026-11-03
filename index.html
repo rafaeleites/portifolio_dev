@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rafael Leites · Portfólio AI Builder</title>
+<meta name="description" content="Projetos com IA em uso por negócios reais: CRM com IA, automação de Instagram em n8n, SaaS de automação, agente de prospecção e uma equipe de agentes com travas de segurança.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f6fa; --bg-2: #eceef6; --surface: #ffffff; --ink: #0d1430; --text: #3a4263; --soft: #5d6585;
+    --line: #dfe2ee; --ember: #c2410c; --ember-hi: #a8380a; --ember-ink: #ffffff;
+    --green: 22 163 74; --indigo: 79 70 229; --violet: 124 58 237; --teal: 13 148 136; --orange: 234 88 12;
+    --todo-bg: #fff1c7; --todo-ink: #7a4b00;
+    --display: "Bricolage Grotesque", "Manrope", system-ui, sans-serif;
+    --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem }
+  body { background: var(--bg); color: var(--text); font: 500 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip }
+  h1, h2, h3 { font-family: var(--display); color: var(--ink); letter-spacing: -.035em; text-wrap: balance }
+  p { text-wrap: pretty }
+  a { color: inherit; text-underline-offset: .2em }
+  button { font: inherit; color: inherit; background: none; border: 0 }
+  :focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; border-radius: 6px }
+  .wrap { width: 100%; max-width: 78rem; margin-inline: auto; padding-inline: 1.25rem }
+  @media (min-width: 768px) { .wrap { padding-inline: 2rem } }
+  .todo { background: var(--todo-bg); color: var(--todo-ink); border-radius: 6px; padding: 0 .35em; font-weight: 700 }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 3.1rem; padding: 0 1.4rem; border-radius: 999px; font-weight: 700; font-size: .98rem; white-space: nowrap; text-decoration: none; transition: transform .3s var(--ease), box-shadow .3s, background-color .2s }
+  .btn:active { transform: translateY(1px) scale(.99) }
+  .btn-ember { background: var(--ember); color: var(--ember-ink); box-shadow: 0 12px 28px -14px rgb(194 65 12 / .8) }
+  .btn-ember:hover { background: var(--ember-hi) }
+  .btn-ghost { color: var(--ink); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line) }
+  .btn-ghost:hover { box-shadow: inset 0 0 0 1px #b9bfd6 }
+  .btn svg { width: 18px; height: 18px }
+
+  /* Topo */
+  .top { position: fixed; inset: 0 0 auto; z-index: 20; background: rgb(245 246 250 / .82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line) }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 4.2rem; gap: 1rem }
+  .brand { display: flex; align-items: center; gap: .6rem; font-family: var(--display); font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -.02em; font-size: 1.1rem }
+  .brand i { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 10px; background: var(--ink); color: #fff; font-style: normal; font-size: .9rem }
+  .top nav { display: flex; gap: 1.6rem; font-weight: 600; font-size: .95rem }
+  .top nav a { text-decoration: none; color: var(--soft) }
+  .top nav a:hover { color: var(--ink) }
+  .top .btn { min-height: 2.5rem; padding: 0 1.1rem; font-size: .9rem }
+  @media (max-width: 860px) { .top nav { display: none } }
+
+  /* Abertura */
+  .intro { position: relative; isolation: isolate; padding: 8rem 0 3.5rem; overflow: hidden }
+  .intro::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(40% 50% at 85% 20%, rgb(var(--indigo) / .09), transparent 70%), radial-gradient(35% 45% at 5% 0%, rgb(240 80 26 / .07), transparent 70%) }
+  .pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .8rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-size: .85rem; font-weight: 700; color: var(--ink) }
+  .pill b { width: .5rem; height: .5rem; border-radius: 99px; background: rgb(var(--green)) }
+  .intro h1 { margin-top: 1.2rem; max-width: 52rem; font-size: clamp(2.4rem, 5.2vw, 4.2rem); font-weight: 800; line-height: 1 }
+  .intro h1 em { font-style: normal; color: var(--ember) }
+  .intro .lead { margin-top: 1.4rem; max-width: 44rem; font-size: 1.12rem; color: var(--text) }
+  .intro .cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem }
+
+  /* Índice dos projetos */
+  .map { margin-top: 3.5rem }
+  .map h2 { font-size: .8rem; font-family: var(--sans); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--soft) }
+  .map ol { display: grid; gap: .6rem; margin-top: .9rem; list-style: none }
+  .map a { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .35rem 1rem; align-items: center; padding: .95rem 1.1rem; border-radius: 16px; background: var(--surface); box-shadow: 0 0 0 1px var(--line); text-decoration: none; transition: box-shadow .3s, transform .3s var(--ease) }
+  .map a:hover { box-shadow: 0 0 0 1px rgb(var(--a) / .55), 0 16px 36px -28px rgb(var(--a) / .9); transform: translateY(-1px) }
+  .map .ic { grid-row: span 2; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
+  .map .ic svg { width: 18px; height: 18px }
+  .map .nm { font-weight: 800; color: var(--ink); line-height: 1.3 }
+  .map .nm small { display: block; font-weight: 600; font-size: .9rem; color: var(--text) }
+  .map .tags { display: flex; flex-wrap: wrap; gap: .35rem }
+  .map .tags span { font-size: .74rem; font-weight: 800; padding: .15rem .55rem; border-radius: 99px; background: var(--bg); color: var(--ink) }
+  @media (min-width: 900px) {
+    .map a { grid-template-columns: 2.6rem minmax(0, 1fr) minmax(0, 1.1fr) }
+    .map .ic { grid-row: auto }
+    .map .tags { justify-content: flex-end }
+  }
+
+  /* Blocos dos projetos */
+  .svc { position: relative; isolation: isolate; padding: 4.5rem 0; --a-ink: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
+  @media (min-width: 768px) { .svc { padding: 6rem 0 } }
+  .svc::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(45% 55% at 12% 0%, rgb(var(--a) / .09), transparent 70%) }
+  .svc.rev::before { background: radial-gradient(45% 55% at 88% 0%, rgb(var(--a) / .09), transparent 70%) }
+  .svc::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb(var(--a) / .7) 18%, rgb(var(--a) / .15) 55%, transparent) }
+  .svc .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem }
+  @media (min-width: 1024px) {
+    .svc .wrap { grid-template-columns: .8fr 1.2fr; gap: 4rem; align-items: center }
+    .svc.rev .wrap { grid-template-columns: 1.2fr .8fr }
+    .svc.rev .copy { order: 2 }
+  }
+  .kicker { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem }
+  .kicker .ic { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
+  .kicker .ic svg { width: 18px; height: 18px }
+  .kicker .n { font-family: var(--mono); font-weight: 700; color: var(--a-ink) }
+  .kicker .ln { flex: 1; max-width: 7rem; height: 1px; background: linear-gradient(90deg, rgb(var(--a) / .6), transparent) }
+  .svc h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.02 }
+  .svc h2 em { font-style: normal; color: var(--a-ink) }
+  .svc .tag { margin-top: .5rem; font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--soft) }
+  .svc .lead { margin-top: .8rem; font-size: 1.08rem; color: var(--text) }
+  .svc .result { margin-top: 1.4rem; padding: .8rem 1rem; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px rgb(var(--a) / .3); font-weight: 600; color: var(--ink) }
+  .svc .result + .result { margin-top: .6rem }
+  .svc .result small { display: block; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--a-ink) }
+
+  .items { display: flex; flex-direction: column; gap: .3rem; margin-top: 1.6rem; list-style: none }
+  .item { position: relative; overflow: hidden; display: flex; align-items: center; gap: .9rem; width: 100%; padding: .5rem .6rem; border-radius: 12px; text-align: left; cursor: pointer; color: var(--soft); transition: color .3s, background-color .3s }
+  .item:hover { color: var(--ink) }
+  .item[aria-selected="true"] { color: var(--ink); background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 10px 24px -20px rgb(13 20 48 / .6) }
+  .item .ii { display: grid; place-items: center; flex-shrink: 0; width: 2.3rem; height: 2.3rem; border-radius: 10px; transition: color .3s, background-color .3s }
+  .item .ii svg { width: 19px; height: 19px }
+  .item[aria-selected="true"] .ii { color: var(--a-ink); background: rgb(var(--a) / .1) }
+  .item .lb { font-size: 1.05rem; font-weight: 700; line-height: 1.3 }
+  .item .pg { display: none }
+  .stack { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem }
+  .stack span { font-size: .78rem; font-weight: 700; padding: .2rem .6rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); color: var(--text) }
+
+  @media (max-width: 1023px) {
+    .svc .wrap { gap: 0 }
+    .svc .copy { display: contents }
+    .svc .stage { order: 4; margin-top: 1.2rem }
+    .svc .result, .svc .stack { order: 5 }
+    .items { flex-direction: row; gap: .5rem; overflow-x: auto; scrollbar-width: none; margin-inline: -1.25rem; padding: 0 1.25rem .25rem; scroll-snap-type: x proximity }
+    .items::-webkit-scrollbar { display: none }
+    .items li { flex-shrink: 0; scroll-snap-align: start }
+    .item { width: auto; gap: .45rem; padding: .35rem .9rem .35rem .35rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line) }
+    .item[aria-selected="true"] { box-shadow: inset 0 0 0 1px rgb(var(--a) / .6) }
+    .item .ii { width: 2rem; height: 2rem; border-radius: 99px }
+    .item .lb { font-size: .9rem; white-space: nowrap }
+    .item .pg { display: block; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: rgb(var(--a)) }
+    .svc.auto .item[aria-selected="true"] .pg { animation: story 4200ms linear forwards }
+  }
+  @keyframes story { to { width: 100% } }
+
+  /* Palco: cartões de interface ligados à lista */
+  .grid { display: grid; gap: .9rem; grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .grid.g-ig { grid-template-columns: .9fr 1.1fr }
+  .ui { position: relative; min-width: 0; padding: 1rem 1.05rem; border-radius: 16px; background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 24px 50px -34px rgb(13 20 48 / .55); font-size: .84rem; color: var(--text); cursor: pointer; transition: opacity .5s var(--ease), transform .6s var(--ease), box-shadow .5s }
+  .ui.on { box-shadow: 0 0 0 1px rgb(var(--a) / .65), 0 0 0 6px rgb(var(--a) / .08), 0 30px 60px -34px rgb(var(--a) / .6) }
+  .ui.tall { grid-row: span 2 }
+  .ui.flush { padding: .45rem }
+  @media (min-width: 1024px) {
+    .stage.has-on .ui:not(.on) { opacity: .5 }
+    .ui.on { transform: translateY(-3px) }
+  }
+  @media (max-width: 1023px) {
+    .grid, .grid.g-ig { grid-template-columns: minmax(0, 1fr) }
+    .grid > .ui { grid-column: auto; grid-row: auto }
+    .grid > .ui:not(.on) { display: none }
+  }
+  .wide { grid-column: 1 / -1 }
+  .ut { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .7rem; font-size: .8rem; font-weight: 800; color: var(--ink) }
+  .ut em { font-style: normal; font-weight: 600; font-size: .72rem; color: var(--soft) }
+  .ut .dot { display: inline-block; width: .45rem; height: .45rem; margin-right: .4rem; border-radius: 99px; background: rgb(var(--green)) }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: .6rem; padding: .5rem .6rem; border-radius: 9px; background: var(--bg); color: var(--ink) }
+  .row + .row { margin-top: .35rem }
+  .row b { color: var(--ink) }
+  .row small { display: block; font-size: .74rem; color: var(--text) }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; font-size: .8rem }
+  .chip { display: inline-flex; align-items: center; gap: .25rem; padding: .12rem .55rem; border-radius: 99px; font-size: .7rem; font-weight: 800; white-space: nowrap; background: var(--bg-2); color: var(--ink) }
+  .chip.hot { background: #ffe4d8; color: #8a2c0d }
+  .chip.ok { background: #dcfce7; color: #14532d }
+  .chip.vi { background: #ede9fe; color: #4c1d95 }
+  .ok-ic { display: grid; place-items: center; flex-shrink: 0; width: 1.1rem; height: 1.1rem; border-radius: 99px; background: rgb(var(--green)); color: #fff; font-size: .65rem; font-weight: 800 }
+  .ok-ic.no { background: #b45309 }
+  .log .row { justify-content: flex-start }
+  .log .row .num { margin-left: auto }
+  .demo-note { margin-top: .7rem; font-size: .72rem; color: var(--soft) }
+  .rules { display: grid; gap: .35rem; font-family: var(--mono); font-size: .76rem; line-height: 1.5 }
+  .rules p { padding: .45rem .6rem; border-radius: 9px; background: var(--bg); color: var(--ink) }
+  .rules b { display: inline-block; min-width: 7.5rem; font-weight: 800 }
+  .rules .y b { color: #14532d } .rules .m b { color: #7a4b00 } .rules .n b { color: #8a2c0d }
+  .tg { max-width: 22rem; padding: .6rem .75rem; border-radius: 12px 12px 12px 4px; background: var(--bg); color: var(--ink); line-height: 1.45 }
+  .tg small { display: block; margin-top: .25rem; font-size: .68rem; color: var(--soft); text-align: right }
+
+  /* Celular do Instagram */
+  .phone { max-width: 15rem; margin-inline: auto; padding: .55rem; border-radius: 2rem; background: var(--ink); box-shadow: 0 30px 60px -30px rgb(13 20 48 / .7) }
+  .phone .scr { border-radius: 1.55rem; overflow: hidden; background: var(--ink) }
+  .phone video { display: block; width: 100%; aspect-ratio: 720 / 1760; object-fit: cover }
+  .ui.tall .demo-note { text-align: center }
+
+  /* Vídeo */
+  .win { border-radius: 12px; overflow: hidden }
+  .win .bar { display: flex; align-items: center; gap: .7rem; height: 2.3rem; padding: 0 .85rem; border-bottom: 1px solid var(--line); font-size: .74rem; color: var(--soft) }
+  .win .dots { display: flex; gap: 6px }
+  .win .dots i { width: 9px; height: 9px; border-radius: 99px; background: #d3d7e6 }
+  .win .dots i:first-child { background: var(--ember) }
+  .win video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--bg-2) }
+
+  .bars { display: flex; align-items: flex-end; gap: .35rem; height: 3rem; margin-top: .6rem }
+  .bars i { flex: 1; border-radius: 5px 5px 2px 2px; background: rgb(var(--a) / .75) }
+
+  /* Sobre */
+  .plain { padding: 5rem 0; border-top: 1px solid var(--line) }
+  .plain h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.05 }
+  .plain .sub { margin-top: .8rem; max-width: 46rem; font-size: 1.05rem }
+  .steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; margin-top: 2rem }
+  @media (min-width: 900px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)) } }
+  .step { padding: 1.3rem; border-radius: 18px; background: var(--surface); box-shadow: 0 0 0 1px var(--line) }
+  .step b { font-family: var(--mono); color: var(--ember) }
+  .step h3 { margin: .4rem 0; font-size: 1.15rem; letter-spacing: -.02em }
+  .step p { font-size: .95rem }
+  .jobs { margin-top: 2.5rem; display: grid }
+  .job { display: grid; grid-template-columns: minmax(0, 1fr); gap: .2rem; padding: 1.1rem 0; border-top: 1px solid var(--line) }
+  @media (min-width: 720px) { .job { grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem } }
+  .job .when { font-family: var(--mono); font-size: .88rem; color: var(--ink) }
+  .job h3 { font-size: 1.1rem; letter-spacing: -.02em }
+  .job p { font-size: .95rem }
+  .links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.5rem }
+  footer { padding: 1.6rem 0 2rem; border-top: 1px solid var(--line); font-size: .85rem; color: var(--soft) }
+
+  /* Revelação ao rolar */
+  .js [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0ms) }
+  .js [data-reveal].in { opacity: 1; transform: none }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto }
+    .js [data-reveal] { opacity: 1; transform: none }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.7A8.5 8.5 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
+  <symbol id="i-queue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="18" cy="17" r="3"/></symbol>
+  <symbol id="i-kanban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 3v12"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"/><path d="M3.3 17a9 9 0 1 1 17.4 0"/></symbol>
+  <symbol id="i-window" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 14h.01M15 14h.01"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h6.5a3.5 3.5 0 0 0 0-7h-5a3.5 3.5 0 0 1 0-7H16"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><i>RL</i>Rafael Leites</a>
+    <nav>
+      <a href="#projetos">Projetos</a>
+      <a href="#agentes">Agentes e segurança</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/rafaeleites/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <span class="pill" data-reveal><b></b>Programa de Estágio GenAI iFood · trilha AI Builder</span>
+      <h1 data-reveal style="--d:60ms">Construo com IA sistemas que <em>já estão em uso</em> por negócios reais</h1>
+      <p class="lead" data-reveal style="--d:120ms">Estudo Ciência da Computação na Unifor e, pela minha empresa, a Smart Tech, construo automações, agentes e produtos com IA para clientes. Cada projeto abaixo mostra o problema, o que eu construí, onde a IA entra e como mantenho tudo sob controle.</p>
+      <div class="cta" data-reveal style="--d:180ms">
+        <a class="btn btn-ember" href="#projetos">Ver os projetos <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="https://github.com/rafaeleites" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <nav class="map" id="projetos" aria-label="Projetos" data-reveal style="--d:240ms">
+        <h2>Os projetos e o que cada um mostra</h2>
+        <ol>
+          <li><a href="#my-italy-os" style="--a:var(--indigo)"><span class="ic"><svg><use href="#i-kanban"/></svg></span><span class="nm">My Italy OS<small>CRM com IA para uma assessoria de casamentos em Roma</small></span><span class="tags"><span>Prompt engineering</span><span>Construído com Claude Code</span><span>Revisão humana</span></span></a></li>
+          <li><a href="#instagram" style="--a:var(--green)"><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="nm">Automação de Instagram<small>n8n em produção na Cubana, loja de moda com 230 mil seguidores</small></span><span class="tags"><span>n8n</span><span>APIs e webhooks</span><span>Resultado medido</span></span></a></li>
+          <li><a href="#smart-reply" style="--a:var(--orange)"><span class="ic"><svg><use href="#i-route"/></svg></span><span class="nm">Smart Reply<small>A automação virou produto para várias lojas</small></span><span class="tags"><span>Produto do zero</span><span>API oficial da Meta</span><span>Em produção</span></span></a></li>
+          <li><a href="#smart-lead" style="--a:var(--violet)"><span class="ic"><svg><use href="#i-search"/></svg></span><span class="nm">Smart Lead<small>Agente que encontra e qualifica clientes</small></span><span class="tags"><span>Agente de IA</span><span>Análise de dados</span><span>Custo de IA</span></span></a></li>
+          <li><a href="#agentes" style="--a:var(--teal)"><span class="ic"><svg><use href="#i-bot"/></svg></span><span class="nm">Múltiplos agentes<small>Cada um com uma função, e travas para nenhum fazer estrago</small></span><span class="tags"><span>Claude, GPT e Gemini</span><span>MCP</span><span>Segurança</span></span></a></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- 01 · My Italy OS -->
+  <section id="my-italy-os" class="svc rev" data-block style="--a:var(--indigo)">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-kanban"/></svg></span><span class="n">Projeto 01</span><span class="ln"></span></p>
+        <h2 data-reveal><em>My Italy OS</em>: CRM com IA para casamentos na Itália</h2>
+        <p class="tag">Cliente real · React + Supabase + Claude API</p>
+        <p class="lead" data-reveal style="--d:80ms">Uma assessoria em Roma organiza cerca de 15 casamentos por ano, com 10 a 15 fornecedores cada. A dona tinha desistido do ClickUp por ser complexo demais. Construí do zero um sistema com uma ação principal por tela, e a IA cuida do trabalho repetitivo de texto e documento.</p>
+        <ul class="items" role="tablist" aria-label="My Italy OS" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="tour"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">O sistema e a IA em 2 minutos</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="ia"><span class="ii"><svg><use href="#i-spark"/></svg></span><span class="lb">IA lê contratos em PDF</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="travas"><span class="ii"><svg><use href="#i-lock"/></svg></span><span class="lb">Travas e revisão humana</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="portal"><span class="ii"><svg><use href="#i-heart"/></svg></span><span class="lb">Portal dos noivos (PT/EN)</span><span class="pg"></span></button></li>
+        </ul>
+        <div class="result" data-reveal><small>Onde entra a IA</small>Rascunho de e-mail com o contexto da conversa (Claude Haiku, barato) e leitura de proposta e contrato em PDF (Claude Sonnet, mais preciso). A IA preenche, a equipe confere e decide.</div>
+        <div class="stack"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Claude API</span><span>Gmail, Drive e Agenda</span><span>Playwright</span></div>
+      </div>
+      <div class="stage" data-stage data-reveal style="--d:120ms">
+        <div class="grid">
+          <div class="ui wide flush" data-for="tour">
+            <div class="win">
+              <div class="bar"><span class="dots"><i></i><i></i><i></i></span>my-italy-os · dados de demonstração</div>
+              <video src="videos/my-italy-os-tour.mp4" poster="img/my-italy-os-poster.jpg" controls muted playsinline preload="none"></video>
+            </div>
+          </div>
+          <div class="ui" data-for="ia">
+            <div class="ut">Analisar contrato com IA<em>Claude Sonnet</em></div>
+            <div class="row"><span>Valor total</span><span class="num">€ 3.000,00</span></div>
+            <div class="row"><span>Entrada na assinatura</span><span class="num">30%</span></div>
+            <div class="row"><span>Saldo até</span><span class="num">15 dias antes</span></div>
+            <div class="row"><span>Prazo dos noivos</span><span class="chip vi">Playlist · 30 dias</span></div>
+            <p class="demo-note">Contrato fictício. Pré-preenche o formulário para a equipe conferir.</p>
+          </div>
+          <div class="ui" data-for="travas">
+            <div class="ut">Travas da IA</div>
+            <div class="row"><span>IBAN e dado bancário</span><span class="chip hot">Nunca extraído</span></div>
+            <div class="row"><span>Números conferidos na fonte</span><span class="chip ok">Ativo</span></div>
+            <div class="row"><span>Envio ao casal</span><span class="chip">Só após revisão</span></div>
+            <div class="row"><span>Cada uso registrado</span><span class="chip">modelo · tokens</span></div>
+          </div>
+          <div class="ui wide" data-for="portal">
+            <div class="ut">Portal dos noivos<em>o que o casal vê</em></div>
+            <div class="row"><span><b>Aprovar a proposta</b> · Flores &amp; Decoração</span><span class="chip hot">Revisar</span></div>
+            <div class="row"><span>Parcela 3/6 · vence em 15/10</span><span class="num">€ 1.139,00</span></div>
+            <div class="row"><span>Jornada · Fase 07 de 14</span><span class="chip ok">No prazo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · Automação de Instagram (n8n) -->
+  <section id="instagram" class="svc" data-block style="--a:var(--green)">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="n">Projeto 02</span><span class="ln"></span></p>
+        <h2 data-reveal><em>Automação</em> de Instagram da Cubana, loja de moda</h2>
+        <p class="tag">Em produção no @usocubana_ · n8n + PostgreSQL + API oficial da Meta</p>
+        <p class="lead" data-reveal style="--d:80ms">Quem pergunta o preço e não recebe resposta não compra. O fluxo responde na hora todo comentário, story, anúncio e DM com o produto daquele post, e a equipe só entra quando o cliente quer comprar.</p>
+        <ul class="items" role="tablist" aria-label="Automação de Instagram" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="comentario"><span class="ii"><svg><use href="#i-ig"/></svg></span><span class="lb">Teste ao vivo: comentário vira DM</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="dm"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">O que o fluxo faz por dentro</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="catalogo"><span class="ii"><svg><use href="#i-tag"/></svg></span><span class="lb">Catálogo que a equipe edita</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="fila"><span class="ii"><svg><use href="#i-queue"/></svg></span><span class="lb">Fila de atendimento humano</span><span class="pg"></span></button></li>
+        </ul>
+        <div class="result" data-reveal><small>Resultado</small>Num único Reel da loja (230 mil seguidores), mais de 2.200 comentários. Quem pergunta o preço recebe a DM com o produto daquele post em cerca de 15 segundos, sem ninguém da equipe.</div>
+        <div class="stack"><span>n8n</span><span>PostgreSQL</span><span>Meta Graph API</span><span>JavaScript</span><span>Webhooks</span></div>
+      </div>
+      <div class="stage" data-stage data-reveal style="--d:120ms">
+        <div class="grid g-ig">
+          <div class="ui tall" data-for="comentario">
+            <div class="phone"><div class="scr">
+              <video src="videos/instagram-ao-vivo.mp4" poster="img/instagram-poster.jpg" controls muted playsinline preload="none" aria-label="Gravação da tela: comentário no Reel da loja e a DM automática chegando"></video>
+            </div></div>
+            <p class="demo-note">Gravação real, com a autorização da loja. Os perfis de outras pessoas estão desfocados.</p>
+          </div>
+          <div class="ui log" data-for="dm">
+            <div class="ut"><span><span class="dot"></span>Um comentário, passo a passo</span></div>
+            <div class="row"><span class="ok-ic">✓</span>Evento recebido e origem identificada</div>
+            <div class="row"><span class="ok-ic">✓</span>Intenção: pergunta de preço</div>
+            <div class="row"><span class="ok-ic">✓</span>Produto do post achado no catálogo</div>
+            <div class="row"><span class="ok-ic">✓</span>Resposta pública, com atraso para parecer humana</div>
+            <div class="row"><span class="ok-ic">✓</span>DM com preço, tamanhos e botões<span class="num">~15 s</span></div>
+            <p class="demo-note">O tempo é o do teste ao vivo, do comentário até a DM chegar.</p>
+          </div>
+          <div class="ui" data-for="catalogo">
+            <div class="ut">Catálogo do robô<em>2 peças ativas</em></div>
+            <div class="row"><span><b>Kimono Crochê</b><small>Único · Branco, Cru</small></span><span class="num">R$ 149,00</span></div>
+            <div class="row"><span><b>Vestido Linho</b><small>P ao GG · Areia</small></span><span class="chip hot">Esgotado</span></div>
+            <p class="demo-note">A equipe cadastra a peça a partir do próprio post ou story.</p>
+          </div>
+          <div class="ui wide" data-for="fila">
+            <div class="ut">Fila de atendimento humano<em>atualiza a cada 15 s</em></div>
+            <div class="row"><span><b>@ana.compras</b> · Comprar agora</span><span class="chip hot">🔥 Comprar agora</span></div>
+            <div class="row"><span><b>@joao.h</b> · Tem no tamanho M?</span><span class="chip">📸 Story · 12 min</span></div>
+            <div class="row"><span><b>@mari.oli</b> · Vi o anúncio da blusa!</span><span class="chip">📢 Anúncio · 18 min</span></div>
+            <p class="demo-note">Dados de exemplo. "Obrigado" e emoji não reabrem o atendimento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · Smart Reply -->
+  <section id="smart-reply" class="svc rev" data-block style="--a:var(--orange)">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-route"/></svg></span><span class="n">Projeto 03</span><span class="ln"></span></p>
+        <h2 data-reveal><em>Smart Reply</em>: a automação virou produto</h2>
+        <p class="tag">Em produção · Next.js + PostgreSQL + API da Meta</p>
+        <p class="lead" data-reveal style="--d:80ms">Montar a automação de cada loja à mão não escala. No Smart Reply, a loja conecta o Instagram em um clique pelo login oficial da Meta. Todos os eventos chegam num ponto só e cada um segue para a automação certa.</p>
+        <ul class="items" role="tablist" aria-label="Smart Reply" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="conectar"><span class="ii"><svg><use href="#i-plug"/></svg></span><span class="lb">Conexão em um clique</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="webhook"><span class="ii"><svg><use href="#i-route"/></svg></span><span class="lb">Um receptor para todos os eventos</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">Automações por conta</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="alerta"><span class="ii"><svg><use href="#i-bell"/></svg></span><span class="lb">Aviso quando algo quebra</span><span class="pg"></span></button></li>
+        </ul>
+        <div class="result" data-reveal><small>Resultado</small>App aprovado pela Meta na primeira análise, com as 6 permissões em acesso avançado. Em produção desde outubro de 2026.</div>
+        <div class="stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>pgcrypto</span><span>Meta Graph API</span><span>Vitest</span></div>
+      </div>
+      <div class="stage" data-stage data-reveal style="--d:120ms">
+        <div class="grid">
+          <div class="ui" data-for="conectar">
+            <div class="ut">Contas conectadas<em>exemplo</em></div>
+            <div class="row"><span><b>@loja.exemplo</b><small>Login oficial da Meta</small></span><span class="chip ok">Conectada</span></div>
+            <div class="row"><span>Token</span><span class="chip">Criptografado no banco</span></div>
+            <div class="row"><span>Validade</span><span class="chip">Sem expiração</span></div>
+          </div>
+          <div class="ui log" data-for="webhook">
+            <div class="ut"><span><span class="dot"></span>Evento recebido</span><em>exemplo</em></div>
+            <div class="row"><span class="ok-ic">✓</span>Assinatura da Meta válida</div>
+            <div class="row"><span class="ok-ic">✓</span>Conta identificada</div>
+            <div class="row"><span class="ok-ic no">×</span>Reenvio duplicado descartado</div>
+            <div class="row"><span class="ok-ic">✓</span>Repassado à automação da loja<span class="num">0,12 s</span></div>
+          </div>
+          <div class="ui wide" data-for="regras">
+            <div class="ut">Automação da conta<span class="chip ok">Ligada</span></div>
+            <div class="row"><span><b>Quando:</b> comentário com "valor", "preço" ou "quanto"</span></div>
+            <div class="row"><span><b>Faz:</b> responde em público e manda a DM com o produto e os botões</span></div>
+            <div class="row"><span><b>Destino:</b> motor próprio ou o n8n do cliente</span><span class="chip">por conta</span></div>
+          </div>
+          <div class="ui wide" data-for="alerta">
+            <div class="ut">Alerta no Telegram<em>verificação diária</em></div>
+            <div class="tg">⚠️ O token da <b>@loja.exemplo</b> parou de funcionar. Peça para a loja reconectar a conta.<small>09:00</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · Smart Lead -->
+  <section id="smart-lead" class="svc" data-block style="--a:var(--violet)">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-search"/></svg></span><span class="n">Projeto 04</span><span class="ln"></span></p>
+        <h2 data-reveal><em>Smart Lead</em>: agente que encontra e qualifica clientes</h2>
+        <p class="tag">Uso interno · Next.js + PostgreSQL + Claude API</p>
+        <p class="lead" data-reveal style="--d:80ms">Prospectar empresas que precisam de um site novo levava horas por lead. O agente busca, audita, pontua e escreve a abordagem. Eu só reviso e envio.</p>
+        <ul class="items" role="tablist" aria-label="Smart Lead" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="busca"><span class="ii"><svg><use href="#i-search"/></svg></span><span class="lb">Busca no Google Maps</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="score"><span class="ii"><svg><use href="#i-gauge"/></svg></span><span class="lb">Auditoria e score</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="ficha"><span class="ii"><svg><use href="#i-spark"/></svg></span><span class="lb">Ficha de venda com IA</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="demo"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">Site de demonstração</span><span class="pg"></span></button></li>
+        </ul>
+        <div class="result" data-reveal><small>Onde entra a IA</small>Regras grátis resolvem a maior parte (franquia, site ausente, lentidão). O Claude só entra no que pede julgamento: os casos em dúvida e a ficha de venda.</div>
+        <div class="stack"><span>Next.js</span><span>PostgreSQL</span><span>Drizzle</span><span>Fila (pg-boss)</span><span>Claude API</span><span>Google Places</span></div>
+      </div>
+      <div class="stage" data-stage data-reveal style="--d:120ms">
+        <div class="grid">
+          <div class="ui" data-for="busca">
+            <div class="ut">Busca: dentista · Campinas<em>exemplo</em></div>
+            <div class="row"><span>Novos leads</span><span class="num">48</span></div>
+            <div class="row"><span>Sem site ou site ruim</span><span class="num">21</span></div>
+            <div class="row"><span>Franquia ou rede (fora)</span><span class="num">7</span></div>
+          </div>
+          <div class="ui" data-for="score">
+            <div class="ut">Clínica Exemplo<span class="chip hot">Quente · 82</span></div>
+            <div class="row"><span>Velocidade no celular</span><span class="chip hot">31 / 100</span></div>
+            <div class="row"><span>Botão de WhatsApp</span><span class="chip hot">Ausente</span></div>
+            <div class="row"><span>Instagram ativo</span><span class="chip ok">4,1 mil</span></div>
+          </div>
+          <div class="ui wide" data-for="ficha">
+            <div class="ut">Ficha de venda<em>escrita pelo Claude</em></div>
+            <div class="row"><span>1. O site demora 9 s para abrir no celular, e a maioria desiste antes.</span></div>
+            <div class="row"><span>2. Não há como marcar consulta sem ligar.</span></div>
+            <div class="row"><span><b>Mensagem:</b> "Oi, Dra. Paula! Vi que a clínica tem ótimas avaliações, mas o site…"</span></div>
+          </div>
+          <div class="ui wide" data-for="demo">
+            <div class="ut">Site de demonstração<span class="chip ok">Aberto pelo lead</span></div>
+            <div class="bars"><i style="height:30%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:80%"></i><i style="height:64%"></i><i style="height:95%"></i></div>
+            <p class="demo-note">Um clique monta o site do lead com a marca dele, e o sistema avisa quando ele abre o link.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · Múltiplos agentes -->
+  <section id="agentes" class="svc rev" data-block style="--a:var(--teal)">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-bot"/></svg></span><span class="n">Projeto 05</span><span class="ln"></span></p>
+        <h2 data-reveal><em>Múltiplos agentes</em>, cada um com uma função</h2>
+        <p class="tag">Na minha VPS · Claude, GPT e Gemini · MCP</p>
+        <p class="lead" data-reveal style="--d:80ms">Peço uma tarefa pelo celular e os agentes trabalham como um time: um planeja, outro implementa, outro revisa. Cada um só enxerga o que precisa, e nada chega à produção sem passar por mim.</p>
+        <ul class="items" role="tablist" aria-label="Múltiplos agentes" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="papeis"><span class="ii"><svg><use href="#i-bot"/></svg></span><span class="lb">Um papel para cada agente</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="caminho"><span class="ii"><svg><use href="#i-route"/></svg></span><span class="lb">O caminho até a produção</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="acesso"><span class="ii"><svg><use href="#i-lock"/></svg></span><span class="lb">Permissão mínima</span><span class="pg"></span></button></li>
+          <li><button class="item" role="tab" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">Regras escritas no prompt</span><span class="pg"></span></button></li>
+        </ul>
+        <div class="result" data-reveal><small>Por que modelos diferentes</small>Cada agente usa o modelo que compensa para a tarefa: rápido e barato para operar, mais forte para revisar e decidir. Se um provedor cair, entra o modelo reserva.</div>
+        <div class="stack"><span>Claude</span><span>GPT</span><span>Gemini</span><span>MCP</span><span>n8n</span><span>GitHub</span><span>Docker</span></div>
+      </div>
+      <div class="stage" data-stage data-reveal style="--d:120ms">
+        <div class="grid">
+          <div class="ui wide" data-for="papeis">
+            <div class="ut">Papéis<em>modelo de cada um</em></div>
+            <div class="row"><span><b>Arquiteto</b> · planeja e registra o plano no repositório</span><span class="chip">GPT</span></div>
+            <div class="row"><span><b>Desenvolvedor</b> · implementa numa branch e roda os testes</span><span class="chip vi">Claude Sonnet</span></div>
+            <div class="row"><span><b>Revisor</b> · audita cada pull request</span><span class="chip vi">Claude Haiku</span></div>
+            <div class="row"><span><b>Engenheiro sênior</b> · só para bug difícil</span><span class="chip vi">Claude Opus</span></div>
+            <div class="row"><span><b>Operador de automação</b> · um por cliente, só no n8n dele</span><span class="chip">Gemini Flash</span></div>
+          </div>
+          <div class="ui log" data-for="caminho">
+            <div class="ut">Mudança no banco ou no código</div>
+            <div class="row"><span class="ok-ic">1</span>Plano escrito no repositório</div>
+            <div class="row"><span class="ok-ic">2</span>Teste no banco de desenvolvimento</div>
+            <div class="row"><span class="ok-ic">3</span>Testes e checagem de tipos</div>
+            <div class="row"><span class="ok-ic">4</span>Revisão do pull request</div>
+            <div class="row"><span class="ok-ic">5</span>Eu aprovo o merge</div>
+          </div>
+          <div class="ui" data-for="acesso">
+            <div class="ut">O que cada agente alcança</div>
+            <div class="row"><span>Banco de produção</span><span class="chip ok">Só leitura</span></div>
+            <div class="row"><span>Tabela de chaves</span><span class="chip hot">Bloqueada</span></div>
+            <div class="row"><span>Servidor</span><span class="chip ok">Sem root</span></div>
+            <div class="row"><span>Containers e deploy</span><span class="chip ok">Só leitura</span></div>
+            <div class="row"><span>Branch principal</span><span class="chip hot">Sem push</span></div>
+          </div>
+          <div class="ui wide" data-for="regras">
+            <div class="ut">Trecho do prompt do agente de infraestrutura</div>
+            <div class="rules">
+              <p class="y"><b>PODE</b>ler logs, checar memória e disco, fazer SELECT</p>
+              <p class="m"><b>SÓ COM "pode"</b>reiniciar, criar serviço, mexer em configuração</p>
+              <p class="n"><b>PROIBIDO</b>apagar volume, DROP ou DELETE, mexer em rede e SSH</p>
+            </div>
+            <p class="demo-note">Antes de editar um fluxo do n8n, o agente salva o JSON atual e faz commit, para dar para voltar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="plain">
+    <div class="wrap">
+      <h2 data-reveal>Sobre mim</h2>
+      <p class="sub" data-reveal>Venho da área de dados e há cerca de um ano construo com IA. Uso Claude Code, Gemini CLI e agentes no dia a dia, e cada projeto tem um arquivo com as regras do negócio que a IA segue.</p>
+      <div class="steps">
+        <div class="step" data-reveal><b>01</b><h3>Problema e métrica antes do código</h3><p>Quem sofre com o problema, quanto ele custa e como vou medir o antes e o depois.</p></div>
+        <div class="step" data-reveal style="--d:80ms"><b>02</b><h3>Simples primeiro, IA onde agrega</h3><p>Regra e automação resolvem a maior parte. A IA entra em texto livre, documento ou decisão difusa.</p></div>
+        <div class="step" data-reveal style="--d:160ms"><b>03</b><h3>A IA faz, uma pessoa decide</h3><p>Nada que fala com cliente ou mexe em produção sai sem revisão humana.</p></div>
+      </div>
+      <div class="jobs">
+        <div class="job" data-reveal><span class="when">2024 – hoje</span><div><h3>Fundador · Smart Tech Performance</h3><p>Automações, agentes e produtos com IA para pequenas e médias empresas. <a href="https://www.smarttechperformance.com/" target="_blank" rel="noopener">smarttechperformance.com</a></p></div></div>
+        <div class="job" data-reveal><span class="when">2025 – hoje</span><div><h3>Analista de Inteligência de Dados &amp; Growth · Metashop</h3><p>Pipelines automáticos de dados de anúncios (10 h por semana a menos de relatório manual) e testes A/B (+15% no ROAS médio).</p></div></div>
+        <div class="job" data-reveal><span class="when">2024 – hoje</span><div><h3>Ciência da Computação · Unifor</h3><p>5º semestre, conclusão prevista em julho de 2028. Antes: Engenharia Elétrica na UFRGS.</p></div></div>
+      </div>
+      <div class="links" data-reveal>
+        <a class="btn btn-ember" href="mailto:rafaelleites96@outlook.com">rafaelleites96@outlook.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/rafaeleites/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/rafaeleites" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Rafael Leites · Fortaleza, CE · Fora a gravação do Instagram, feita com a autorização da loja, as telas usam dados fictícios.</div></footer>
+
+<script>
+  document.documentElement.classList.add('js')
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  // Revelação ao rolar
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .12 })
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el))
+
+  // Cada bloco: a lista acende o cartão com o mesmo data-for e os itens se revezam sozinhos.
+  // O mouse em cima (ou o vídeo tocando) pausa; no celular, deslizar o palco troca de item.
+  document.querySelectorAll('[data-block]').forEach((sec) => {
+    const btns = [...sec.querySelectorAll('[data-item]')]
+    const list = sec.querySelector('.items')
+    const stage = sec.querySelector('[data-stage]')
+    const cards = [...stage.querySelectorAll('[data-for]')]
+    let idx = 0, timer = 0, hold = false, vis = false
+    const stop = () => { clearTimeout(timer); sec.classList.remove('auto') }
+    const schedule = () => {
+      stop()
+      if (reduced || hold || !vis) return
+      void sec.offsetWidth; sec.classList.add('auto')
+      timer = setTimeout(() => go(idx + 1), 4200)
+    }
+    const go = (i) => {
+      idx = (i + btns.length) % btns.length
+      const id = btns[idx].dataset.item
+      btns.forEach((b, j) => b.setAttribute('aria-selected', String(j === idx)))
+      cards.forEach((c) => c.classList.toggle('on', c.dataset.for === id))
+      stage.classList.add('has-on')
+      if (list.scrollWidth > list.clientWidth + 1) {
+        const lr = list.getBoundingClientRect(), br = btns[idx].getBoundingClientRect()
+        list.scrollTo({ left: list.scrollLeft + (br.left - lr.left) - (lr.width - br.width) / 2, behavior: reduced ? 'auto' : 'smooth' })
+      }
+      schedule()
+    }
+    let ht = 0
+    const hoverTo = (i) => { clearTimeout(ht); ht = setTimeout(() => { if (i !== idx) go(i) }, 120) }
+    btns.forEach((b, i) => {
+      b.addEventListener('click', () => go(i))
+      b.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hoverTo(i) })
+      b.addEventListener('pointerleave', () => clearTimeout(ht))
+    })
+    cards.forEach((c) => {
+      const owner = () => btns.findIndex((b) => b.dataset.item === c.dataset.for)
+      c.addEventListener('click', () => { const i = owner(); if (i >= 0 && i !== idx) go(i) })
+      c.addEventListener('pointerenter', (e) => { const i = owner(); if (e.pointerType === 'mouse' && i >= 0) hoverTo(i) })
+    })
+    for (const area of [list, stage]) {
+      area.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hold = true; stop() } })
+      area.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hold = false; schedule() } })
+    }
+    stage.querySelectorAll('video').forEach((v) => {
+      v.addEventListener('play', () => { hold = true; stop() })
+      v.addEventListener('pause', () => { hold = false; schedule() })
+    })
+    let tx = 0, ty = 0
+    stage.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY }, { passive: true })
+    stage.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) go(idx + (dx < 0 ? 1 : -1))
+    }, { passive: true })
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; vis ? schedule() : stop() }, { threshold: .35 }).observe(stage)
+    go(0)
+  })
+</script>
+</body>
+</html>
