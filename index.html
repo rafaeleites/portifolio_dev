@@ -268,7 +268,7 @@
         <h2>Os projetos e o que cada um mostra</h2>
         <ol>
           <li><a href="#my-italy-os" style="--a:var(--indigo)"><span class="ic"><svg><use href="#i-kanban"/></svg></span><span class="nm">My Italy OS<small>CRM com IA para uma assessoria de casamentos em Roma</small></span><span class="tags"><span>Prompt engineering</span><span>Construído com Claude Code</span><span>Revisão humana</span></span></a></li>
-          <li><a href="#instagram" style="--a:var(--green)"><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="nm">Automação de Instagram<small>n8n em produção na Cubana, loja de moda com 230 mil seguidores</small></span><span class="tags"><span>n8n</span><span>APIs e webhooks</span><span>Resultado medido</span></span></a></li>
+          <li><a href="#instagram" style="--a:var(--green)"><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="nm">Automação de Instagram<small>n8n em produção na Cubana, loja de moda com 230 mil seguidores</small></span><span class="tags"><span>n8n</span><span>LLM que qualifica no Direct</span><span>Resultado medido</span></span></a></li>
           <li><a href="#smart-reply" style="--a:var(--orange)"><span class="ic"><svg><use href="#i-route"/></svg></span><span class="nm">Smart Reply<small>A automação virou produto para várias lojas</small></span><span class="tags"><span>Produto do zero</span><span>API oficial da Meta</span><span>Em produção</span></span></a></li>
           <li><a href="#smart-lead" style="--a:var(--violet)"><span class="ic"><svg><use href="#i-search"/></svg></span><span class="nm">Smart Lead<small>Agente que encontra e qualifica clientes</small></span><span class="tags"><span>Agente de IA</span><span>Análise de dados</span><span>Custo de IA</span></span></a></li>
           <li><a href="#agentes" style="--a:var(--teal)"><span class="ic"><svg><use href="#i-bot"/></svg></span><span class="nm">Múltiplos agentes<small>Cada um com uma função, e travas para nenhum fazer estrago</small></span><span class="tags"><span>Claude, GPT e Gemini</span><span>MCP</span><span>Segurança</span></span></a></li>
@@ -335,7 +335,7 @@
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="n">Projeto 02</span><span class="ln"></span></p>
         <h2 data-reveal><em>Automação</em> de Instagram da Cubana, loja de moda</h2>
         <p class="tag">Em produção no @usocubana_ · n8n + PostgreSQL + API oficial da Meta</p>
-        <p class="lead" data-reveal style="--d:80ms">Quem pergunta o preço e não recebe resposta não compra. O fluxo responde na hora todo comentário, story, anúncio e DM com o produto daquele post, e a equipe só entra quando o cliente quer comprar.</p>
+        <p class="lead" data-reveal style="--d:80ms">Quem pergunta o preço e não recebe resposta não compra. O fluxo responde na hora todo comentário, story, anúncio e DM com o produto daquele post. Se a pessoa continua a conversa no Direct, uma LLM responde as dúvidas e qualifica o interesse, e a equipe só entra quando o cliente quer comprar.</p>
         <ul class="items" role="tablist" aria-label="Automação de Instagram" data-reveal style="--d:140ms">
           <li><button class="item" role="tab" data-item="comentario"><span class="ii"><svg><use href="#i-ig"/></svg></span><span class="lb">Teste ao vivo: comentário vira DM</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="dm"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">O que o fluxo faz por dentro</span><span class="pg"></span></button></li>
@@ -343,7 +343,7 @@
           <li><button class="item" role="tab" data-item="fila"><span class="ii"><svg><use href="#i-queue"/></svg></span><span class="lb">Fila de atendimento humano</span><span class="pg"></span></button></li>
         </ul>
         <div class="result" data-reveal><small>Resultado</small>Num único Reel da loja (230 mil seguidores), mais de 2.200 comentários. Quem pergunta o preço recebe a DM com o produto daquele post em cerca de 15 segundos, sem ninguém da equipe.</div>
-        <div class="stack"><span>n8n</span><span>PostgreSQL</span><span>Meta Graph API</span><span>JavaScript</span><span>Webhooks</span></div>
+        <div class="stack"><span>n8n</span><span>PostgreSQL</span><span>Meta Graph API</span><span>LLM</span><span>JavaScript</span><span>Webhooks</span></div>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
         <div class="grid g-ig">
@@ -360,6 +360,7 @@
             <div class="row"><span class="ok-ic">✓</span>Produto do post achado no catálogo</div>
             <div class="row"><span class="ok-ic">✓</span>Resposta pública, com atraso para parecer humana</div>
             <div class="row"><span class="ok-ic">✓</span>DM com preço, tamanhos e botões<span class="num">~15 s</span></div>
+            <div class="row"><span class="ok-ic">✓</span>Se a pessoa continua no Direct, uma LLM responde e qualifica</div>
             <p class="demo-note">O tempo é o do teste ao vivo, do comentário até a DM chegar.</p>
           </div>
           <div class="ui" data-for="catalogo">
@@ -389,6 +390,7 @@
         <p class="tag">Em produção · Next.js + PostgreSQL + API da Meta</p>
         <p class="lead" data-reveal style="--d:80ms">Montar a automação de cada loja à mão não escala. No Smart Reply, a loja conecta o Instagram em um clique pelo login oficial da Meta. Todos os eventos chegam num ponto só e cada um segue para a automação certa.</p>
         <ul class="items" role="tablist" aria-label="Smart Reply" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="video-sr"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">O painel em 1 minuto</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="conectar"><span class="ii"><svg><use href="#i-plug"/></svg></span><span class="lb">Conexão em um clique</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="webhook"><span class="ii"><svg><use href="#i-route"/></svg></span><span class="lb">Um receptor para todos os eventos</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">Automações por conta</span><span class="pg"></span></button></li>
@@ -399,6 +401,12 @@
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
         <div class="grid">
+          <div class="ui wide flush" data-for="video-sr">
+            <div class="win">
+              <div class="bar"><span class="dots"><i></i><i></i><i></i></span>smart reply · modo demonstração, contas fictícias</div>
+              <video src="videos/smartreply.mp4" poster="img/smartreply-poster.jpg" controls muted playsinline preload="none"></video>
+            </div>
+          </div>
           <div class="ui" data-for="conectar">
             <div class="ut">Contas conectadas<em>exemplo</em></div>
             <div class="row"><span><b>@loja.exemplo</b><small>Login oficial da Meta</small></span><span class="chip ok">Conectada</span></div>
@@ -436,6 +444,7 @@
         <p class="tag">Uso interno · Next.js + PostgreSQL + Claude API</p>
         <p class="lead" data-reveal style="--d:80ms">Prospectar empresas que precisam de um site novo levava horas por lead. O agente busca, audita, pontua e escreve a abordagem. Eu só reviso e envio.</p>
         <ul class="items" role="tablist" aria-label="Smart Lead" data-reveal style="--d:140ms">
+          <li><button class="item" role="tab" data-item="video-sl"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">O agente em 1min30</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="busca"><span class="ii"><svg><use href="#i-search"/></svg></span><span class="lb">Busca no Google Maps</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="score"><span class="ii"><svg><use href="#i-gauge"/></svg></span><span class="lb">Auditoria e score</span><span class="pg"></span></button></li>
           <li><button class="item" role="tab" data-item="ficha"><span class="ii"><svg><use href="#i-spark"/></svg></span><span class="lb">Ficha de venda com IA</span><span class="pg"></span></button></li>
@@ -446,6 +455,12 @@
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
         <div class="grid">
+          <div class="ui wide flush" data-for="video-sl">
+            <div class="win">
+              <div class="bar"><span class="dots"><i></i><i></i><i></i></span>smart lead · dados fictícios, ficha escrita pelo Claude</div>
+              <video src="videos/smartlead.mp4" poster="img/smartlead-poster.jpg" controls muted playsinline preload="none"></video>
+            </div>
+          </div>
           <div class="ui" data-for="busca">
             <div class="ut">Busca: dentista · Campinas<em>exemplo</em></div>
             <div class="row"><span>Novos leads</span><span class="num">48</span></div>
@@ -495,11 +510,12 @@
         <div class="grid">
           <div class="ui wide" data-for="papeis">
             <div class="ut">Papéis<em>modelo de cada um</em></div>
-            <div class="row"><span><b>Arquiteto</b> · planeja e registra o plano no repositório</span><span class="chip">GPT</span></div>
-            <div class="row"><span><b>Desenvolvedor</b> · implementa numa branch e roda os testes</span><span class="chip vi">Claude Sonnet</span></div>
-            <div class="row"><span><b>Revisor</b> · audita cada pull request</span><span class="chip vi">Claude Haiku</span></div>
-            <div class="row"><span><b>Engenheiro sênior</b> · só para bug difícil</span><span class="chip vi">Claude Opus</span></div>
-            <div class="row"><span><b>Operador de automação</b> · um por cliente, só no n8n dele</span><span class="chip">Gemini Flash</span></div>
+            <div class="row"><span><b>Arquiteto</b> · planeja as ideias e registra o plano no repositório</span><span class="chip vi">Claude Opus 5.5</span></div>
+            <div class="row"><span><b>Administrador da VPS</b> · cuida dos servidores e dos containers</span><span class="chip">GPT-6 Luna</span></div>
+            <div class="row"><span><b>Desenvolvedor</b> · implementa numa branch e roda os testes</span><span class="chip vi">Claude Sonnet 5.5</span></div>
+            <div class="row"><span><b>Revisor</b> · audita cada pull request</span><span class="chip vi">Claude Haiku 5.5</span></div>
+            <div class="row"><span><b>Engenheiro sênior</b> · só para bug difícil</span><span class="chip vi">Claude Opus 5.5</span></div>
+            <div class="row"><span><b>Operador de automação</b> · um por cliente, só no n8n dele</span><span class="chip">Gemini 3.8 Flash</span></div>
           </div>
           <div class="ui log" data-for="caminho">
             <div class="ut">Mudança no banco ou no código</div>
