@@ -99,7 +99,7 @@
   .map .ic { display: grid; place-items: center; flex-shrink: 0; width: 2.4rem; height: 2.4rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
   .map .ic svg { width: 17px; height: 17px }
   .map .hd b { font-size: 1.05rem; font-weight: 800; color: var(--ink); line-height: 1.25 }
-  .map .oq { font-size: .9rem; color: var(--text) }
+  .map .oq { font-size: .88rem; line-height: 1.5; color: var(--text) }
   .map strong { font-size: 1rem; font-weight: 800; line-height: 1.35; color: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
   .map .vp { display: inline-flex; align-items: center; gap: .3rem; margin-top: auto; padding-top: .3rem; font-size: .84rem; font-weight: 700; color: var(--soft) }
   .map .vp svg { width: 14px; height: 14px }
@@ -309,11 +309,11 @@
       <nav class="map" id="projetos" aria-label="Projetos" data-reveal style="--d:240ms">
         <h2>Os projetos e o que cada um entrega</h2>
         <ol>
-          <li><a href="#my-italy-os" data-skills="prompt apis dados" style="--a:var(--indigo)"><span class="hd"><span class="ic"><svg><use href="#i-kanban"/></svg></span><b>My Italy OS</b></span><span class="oq">CRM com IA para casamentos em Roma</span><strong>Lê contratos e monta o checklist</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
-          <li><a href="#instagram" data-skills="prompt automacoes apis" style="--a:var(--green)"><span class="hd"><span class="ic"><svg><use href="#i-chat"/></svg></span><b>Automação de Instagram</b></span><span class="oq">n8n numa loja com 230 mil seguidores</span><strong>DM com o produto em ~15 s</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
-          <li><a href="#smart-reply" data-skills="automacoes apis" style="--a:var(--orange)"><span class="hd"><span class="ic"><svg><use href="#i-route"/></svg></span><b>Smart Reply</b></span><span class="oq">SaaS de automação de Instagram</span><strong>Aprovado pela Meta de primeira</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
-          <li><a href="#smart-lead" data-skills="prompt agentes dados" style="--a:var(--violet)"><span class="hd"><span class="ic"><svg><use href="#i-search"/></svg></span><b>Smart Lead</b></span><span class="oq">Agente de prospecção com Claude</span><strong>Ficha e site demo em ~1 min</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
-          <li><a href="#agentes" data-skills="agentes" style="--a:var(--teal)"><span class="hd"><span class="ic"><svg><use href="#i-bot"/></svg></span><b>Múltiplos agentes</b></span><span class="oq">Time de IA com papéis e travas</span><strong>Nada vai à produção sem revisão</strong><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#my-italy-os" data-skills="prompt apis dados" style="--a:var(--indigo)"><span class="hd"><span class="ic"><svg><use href="#i-kanban"/></svg></span><b>My Italy OS</b></span><span class="oq">CRM com IA para uma assessoria de casamentos. A IA lê propostas, e-mails e contratos, gera o checklist e as parcelas, e a equipe revisa e aprova.</span><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#instagram" data-skills="prompt automacoes apis" style="--a:var(--green)"><span class="hd"><span class="ic"><svg><use href="#i-chat"/></svg></span><b>Automação de redes sociais</b></span><span class="oq">Responde comentários, DMs e stories de uma loja com 230 mil seguidores: cerca de 3 mil comentários e 5 mil conversas por mês, tudo registrado no PostgreSQL.</span><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#smart-reply" data-skills="automacoes apis" style="--a:var(--orange)"><span class="hd"><span class="ic"><svg><use href="#i-route"/></svg></span><b>Smart Reply</b></span><span class="oq">SaaS de automação de Instagram, com app aprovado e verificado pela Meta. Cria automações simples e médias sem código e distribui os webhooks da Meta para o n8n.</span><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#smart-lead" data-skills="prompt agentes dados" style="--a:var(--violet)"><span class="hd"><span class="ic"><svg><use href="#i-search"/></svg></span><b>Smart Lead</b></span><span class="oq">Agente de prospecção com IA. Audita o site e o Instagram pelas APIs do Google e da Meta, e a IA escreve a ficha de venda. Ficha e site demo em 1 minuto.</span><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
+          <li><a href="#agentes" data-skills="agentes" style="--a:var(--teal)"><span class="hd"><span class="ic"><svg><use href="#i-bot"/></svg></span><b>Múltiplos agentes</b></span><span class="oq">Time de IA na minha VPS, cada agente com um papel e travas de segurança. Planejam, implementam e revisam, mas nada vai à produção sem revisão.</span><span class="vp">Ver projeto <svg><use href="#i-arrow"/></svg></span></a></li>
         </ol>
       </nav>
     </div>
@@ -327,7 +327,7 @@
         <h2 data-reveal><em>My Italy OS</em></h2>
         <p class="sub" data-reveal>CRM com IA para uma assessoria de casamentos em Roma</p>
         <p class="tag">Cliente real · React + Supabase + Claude API</p>
-        <p class="lead" data-reveal style="--d:80ms">A dona qualificava cada lead à mão e negociava tudo com os noivos por e-mail. Hoje a plataforma qualifica sozinha, deixa os e-mails prontos e liga a equipe direto aos noivos.</p>
+        <p class="lead" data-reveal style="--d:80ms">A dona qualificava cada lead à mão e negociava tudo com os noivos por e-mail. Hoje a IA lê propostas, e-mails e contratos, gera o checklist e as parcelas, e a equipe só revisa e aprova.</p>
         <div class="result" data-reveal><small>Antes e depois</small>Lead qualificado sozinho (orçamento por convidado, local e data) e e-mail pronto, só para revisar e enviar.</div>
         <button class="btn btn-ghost mais" type="button" data-abre="det-my-italy-os">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
@@ -376,11 +376,11 @@
     <div class="wrap">
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="n">Projeto 02</span><span class="ln"></span></p>
-        <h2 data-reveal><em>Automação</em> de Instagram</h2>
+        <h2 data-reveal><em>Automação</em> de redes sociais</h2>
         <p class="sub" data-reveal>n8n em produção na Cubana, loja de moda com 230 mil seguidores</p>
         <p class="tag">Em produção · n8n + PostgreSQL + API da Meta + LLM</p>
-        <p class="lead" data-reveal style="--d:80ms">Quem pergunta o preço recebe na hora a DM com o produto daquele post. Se continua no Direct, uma LLM responde e qualifica.</p>
-        <div class="result" data-reveal><small>Resultado</small>Num único Reel, mais de 2.200 comentários. A DM chega em cerca de 15 s, sem ninguém da equipe.</div>
+        <p class="lead" data-reveal style="--d:80ms">Responde comentários, DMs e stories com o produto daquele post. Se a pessoa continua no Direct, uma LLM responde e qualifica o interesse.</p>
+        <div class="result" data-reveal><small>Resultado</small>Cerca de 3 mil comentários e 5 mil conversas por mês, sem ninguém da equipe, tudo registrado e auditável no PostgreSQL.</div>
         <button class="btn btn-ghost mais" type="button" data-abre="det-instagram">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
@@ -433,10 +433,10 @@
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-route"/></svg></span><span class="n">Projeto 03</span><span class="ln"></span></p>
         <h2 data-reveal><em>Smart Reply</em></h2>
-        <p class="sub" data-reveal>A automação de Instagram virou produto para várias lojas</p>
+        <p class="sub" data-reveal>SaaS de automação de Instagram, com app aprovado e verificado pela Meta</p>
         <p class="tag">Em produção · Next.js + PostgreSQL + API da Meta</p>
-        <p class="lead" data-reveal style="--d:80ms">A loja conecta o Instagram em um clique pelo login oficial da Meta, e cada evento segue para a automação certa.</p>
-        <div class="result" data-reveal><small>Resultado</small>App aprovado pela Meta na primeira análise, com 6 permissões em acesso avançado.</div>
+        <p class="lead" data-reveal style="--d:80ms">Cria automações de baixa e média complexidade sem código e funciona como hub: recebe os webhooks da Meta e os distribui para o n8n de cada loja.</p>
+        <div class="result" data-reveal><small>Resultado</small>App aprovado e verificado pela Meta, com 6 permissões em acesso avançado.</div>
         <button class="btn btn-ghost mais" type="button" data-abre="det-smart-reply">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
@@ -490,8 +490,8 @@
         <h2 data-reveal><em>Smart Lead</em></h2>
         <p class="sub" data-reveal>Agente que encontra e qualifica clientes para a minha empresa</p>
         <p class="tag">Ferramenta interna · Next.js + PostgreSQL + Claude API</p>
-        <p class="lead" data-reveal style="--d:80ms">Busca no Google Maps, audita o site, dá um score, e o Claude escreve a abordagem. Eu só reviso e envio.</p>
-        <div class="result" data-reveal><small>Resultado</small>Ficha de venda e site de demonstração prontos em cerca de 1 minuto por lead.</div>
+        <p class="lead" data-reveal style="--d:80ms">Busca empresas no Google Maps, audita o site e o Instagram pelas APIs do Google e da Meta, e a IA escreve a ficha de venda. Eu só reviso e envio.</p>
+        <div class="result" data-reveal><small>Resultado</small>Ficha de venda e site de demonstração, a partir de modelos por nicho, prontos em cerca de 1 minuto por lead.</div>
         <button class="btn btn-ghost mais" type="button" data-abre="det-smart-lead">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
@@ -610,8 +610,8 @@
         <li>Integração com Drive e Agenda</li>
       </ul></div>
       <div><h4>Onde entra a IA</h4><ul>
-        <li>Lê a proposta em PDF e preenche o cadastro (Claude Sonnet)</li>
-        <li>Lê o contrato e transforma os prazos em tarefas do checklist, com responsável</li>
+        <li>Lê as propostas em PDF e os e-mails dos fornecedores e preenche o cadastro (Claude Sonnet)</li>
+        <li>Analisa o contrato e, a partir dele, gera as tarefas do checklist (com responsável) e as parcelas; a equipe revisa e aprova</li>
         <li>Rascunha e-mails com o contexto da conversa (Claude Haiku, mais barato)</li>
         <li>Traduz a proposta para os noivos</li>
       </ul></div>
@@ -627,7 +627,7 @@
   </dialog>
 
   <dialog class="det" id="det-instagram" aria-labelledby="t-instagram" style="--a:var(--green)">
-    <div class="hd"><div><small>Projeto 02</small><h3 id="t-instagram">Automação de Instagram</h3><p>n8n em produção na Cubana, loja de moda com 230 mil seguidores</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="hd"><div><small>Projeto 02</small><h3 id="t-instagram">Automação de redes sociais</h3><p>n8n em produção na Cubana, loja de moda com 230 mil seguidores</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
     <div class="bd">
       <div class="full"><h4>O problema</h4><p>Com centenas de comentários por post, responder um por um à mão não dá. E quem pergunta o preço e não recebe resposta não compra.</p></div>
       <div><h4>O que construí</h4><ul>
@@ -636,6 +636,7 @@
         <li>DM com o produto daquele post, puxado do catálogo (preço, tamanhos, cores, esgotado) e com botões de compra</li>
         <li>Painel de catálogo, hoje com 15 produtos, que a equipe edita a partir dos próprios posts e stories</li>
         <li>Fila de atendimento humano que prioriza quem tocou em "Comprar agora", com tempo de espera e filtros</li>
+        <li>Cada evento e cada resposta registrados no PostgreSQL, para auditoria</li>
       </ul></div>
       <div><h4>Onde entra a IA</h4><ul>
         <li>Se a pessoa continua no Direct, uma LLM responde as dúvidas e qualifica o interesse antes de passar para a equipe</li>
@@ -643,20 +644,20 @@
       </ul><h4 style="margin-top:1.2rem">Travas</h4><ul>
         <li>"Obrigado" e emoji não reabrem o atendimento</li>
       </ul></div>
-      <div><h4>Resultado</h4><p>Num único Reel da loja, mais de 2.200 comentários. No teste ao vivo, a DM chegou em cerca de 15 segundos, sem ninguém da equipe.</p></div>
+      <div><h4>Resultado</h4><p>Cerca de 3 mil interações em comentários e 5 mil conversas por mês, respondidas sem ninguém da equipe e registradas no PostgreSQL. Num único Reel, mais de 2.200 comentários; no teste ao vivo, a DM chegou em cerca de 15 segundos.</p></div>
       <div><h4>Tecnologias</h4><div class="stack"><span>n8n</span><span>PostgreSQL</span><span>Meta Graph API</span><span>LLM</span><span>JavaScript</span><span>Webhooks</span></div></div>
       <p class="full nota">A gravação é real e foi feita com a autorização da loja. Os perfis de outras pessoas estão desfocados.</p>
     </div>
   </dialog>
 
   <dialog class="det" id="det-smart-reply" aria-labelledby="t-smart-reply" style="--a:var(--orange)">
-    <div class="hd"><div><small>Projeto 03</small><h3 id="t-smart-reply">Smart Reply</h3><p>A automação de Instagram virou produto para várias lojas</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="hd"><div><small>Projeto 03</small><h3 id="t-smart-reply">Smart Reply</h3><p>SaaS de automação de Instagram, com app aprovado e verificado pela Meta</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
     <div class="bd">
       <div class="full"><h4>O problema</h4><p>Montar a automação de cada loja à mão não escala: o token e o webhook de cada uma eram configurados um a um, e a Meta só aceita um endereço de webhook por app.</p></div>
       <div><h4>O que construí</h4><ul>
         <li>Conexão em um clique pelo login oficial da Meta, com token sem expiração e criptografado no banco</li>
-        <li>Um receptor único de webhooks: valida a assinatura da Meta, descarta reenvios e encaminha cada evento para a automação da conta</li>
-        <li>Motor de automações por conta, com gatilhos, palavras, posts, prioridade e editor com prévia da DM</li>
+        <li>Hub de webhooks: valida a assinatura da Meta, descarta reenvios e encaminha cada evento para a automação da conta ou para o n8n da loja</li>
+        <li>Motor próprio para automações de baixa e média complexidade (gatilhos, palavras, posts e botões), sem precisar de HTTP request, agentes de IA ou banco externo, com editor e prévia da DM</li>
         <li>Atendimento humano, catálogo e contatos com etiquetas</li>
         <li>Verificação diária dos tokens, com alerta no Telegram</li>
       </ul></div>
@@ -665,7 +666,7 @@
         <li>Os agentes arquiteto, desenvolvedor e revisor trabalham no repositório (projeto 05)</li>
         <li>Próximo passo planejado: uma resposta com IA usando o catálogo, com limite de uso</li>
       </ul></div>
-      <div><h4>Resultado</h4><p>App aprovado pela Meta na primeira análise, com as 6 permissões em acesso avançado. Em produção desde outubro de 2026.</p></div>
+      <div><h4>Resultado</h4><p>App aprovado e verificado pela Meta, com as 6 permissões em acesso avançado. Em produção desde outubro de 2026. O que é mais complexo continua no n8n, que recebe os eventos pelo hub.</p></div>
       <div><h4>Tecnologias</h4><div class="stack"><span>Next.js 15</span><span>TypeScript</span><span>PostgreSQL</span><span>pgcrypto</span><span>Meta Graph API</span><span>Vitest</span><span>Docker</span></div></div>
       <p class="full nota">O vídeo roda em modo demonstração: contas e tokens fictícios e API da Meta simulada. O comentário que aparece chegando é um webhook de teste.</p>
     </div>
@@ -677,9 +678,9 @@
       <div class="full"><h4>O problema</h4><p>Prospectar empresas que precisam de um site novo levava horas por lead: achar a empresa, abrir o site, testar, entender o negócio e escrever a abordagem.</p></div>
       <div><h4>O que construí</h4><ul>
         <li>Busca por nicho, cidade e bairro no Google Maps, com limite de custo por mês</li>
-        <li>Auditoria do site (velocidade, segurança, WhatsApp, pixel) e um score explicado ("Por que 73?")</li>
+        <li>Auditoria do site pela API do Google (velocidade, segurança, WhatsApp, pixel) e do Instagram pela API da Meta, com um score explicado ("Por que 73?")</li>
         <li>Franquias e redes separadas automaticamente</li>
-        <li>Site de demonstração com a marca do lead, em 3 estilos, e aviso quando ele abre o link</li>
+        <li>Site de demonstração montado a partir de modelos por nicho, com a marca do lead, e aviso quando ele abre o link</li>
         <li>Funil e indicadores da prospecção</li>
       </ul></div>
       <div><h4>Onde entra a IA</h4><ul>
