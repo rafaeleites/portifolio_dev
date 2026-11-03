@@ -79,77 +79,76 @@
     .map .tags { justify-content: flex-end }
   }
 
-  /* Blocos dos projetos */
-  .svc { position: relative; isolation: isolate; padding: 4.5rem 0; --a-ink: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
-  @media (min-width: 768px) { .svc { padding: 6rem 0 } }
+  /* Blocos dos projetos: o essencial cabe numa tela; o resto fica em "Ver detalhes do projeto" */
+  .svc { position: relative; isolation: isolate; padding: 3.5rem 0; --a-ink: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
+  @media (min-width: 1024px) { .svc { padding: 4rem 0 } }
   .svc::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(45% 55% at 12% 0%, rgb(var(--a) / .09), transparent 70%) }
   .svc.rev::before { background: radial-gradient(45% 55% at 88% 0%, rgb(var(--a) / .09), transparent 70%) }
   .svc::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgb(var(--a) / .7) 18%, rgb(var(--a) / .15) 55%, transparent) }
-  .svc .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem }
+  .svc .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.8rem }
   @media (min-width: 1024px) {
-    .svc .wrap { grid-template-columns: .8fr 1.2fr; gap: 4rem; align-items: center }
+    .svc .wrap { grid-template-columns: .8fr 1.2fr; gap: 3.5rem; align-items: center }
     .svc.rev .wrap { grid-template-columns: 1.2fr .8fr }
     .svc.rev .copy { order: 2 }
   }
-  .kicker { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem }
-  .kicker .ic { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
-  .kicker .ic svg { width: 18px; height: 18px }
+  .kicker { display: flex; align-items: center; gap: .7rem; margin-bottom: .8rem }
+  .kicker .ic { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 12px; color: rgb(var(--a)); background: rgb(var(--a) / .1); box-shadow: inset 0 0 0 1px rgb(var(--a) / .35) }
+  .kicker .ic svg { width: 17px; height: 17px }
   .kicker .n { font-family: var(--mono); font-weight: 700; color: var(--a-ink) }
   .kicker .ln { flex: 1; max-width: 7rem; height: 1px; background: linear-gradient(90deg, rgb(var(--a) / .6), transparent) }
-  .svc h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.02 }
+  .svc h2 { font-size: clamp(2rem, 3.4vw, 2.7rem); font-weight: 800; line-height: 1.05 }
   .svc h2 em { font-style: normal; color: var(--a-ink) }
-  .svc .tag { margin-top: .5rem; font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--soft) }
-  .svc .lead { margin-top: .8rem; font-size: 1.08rem; color: var(--text) }
-  .svc .result { margin-top: 1.4rem; padding: .8rem 1rem; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px rgb(var(--a) / .3); font-weight: 600; color: var(--ink) }
-  .svc .result + .result { margin-top: .6rem }
+  .svc .sub { margin-top: .35rem; font-size: 1.1rem; font-weight: 700; line-height: 1.35; color: var(--ink); text-wrap: balance }
+  .svc .tag { margin-top: .55rem; font-size: .76rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--soft) }
+  .svc .lead { margin-top: .9rem; max-width: 34rem; font-size: 1.02rem; color: var(--text) }
+  .svc .result { margin-top: 1.1rem; padding: .75rem 1rem; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px rgb(var(--a) / .3); font-weight: 600; color: var(--ink) }
   .svc .result small { display: block; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--a-ink) }
-
-  .items { display: flex; flex-direction: column; gap: .3rem; margin-top: 1.6rem; list-style: none }
-  .item { position: relative; overflow: hidden; display: flex; align-items: center; gap: .9rem; width: 100%; padding: .5rem .6rem; border-radius: 12px; text-align: left; cursor: pointer; color: var(--soft); transition: color .3s, background-color .3s }
-  .item:hover { color: var(--ink) }
-  .item[aria-selected="true"] { color: var(--ink); background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 10px 24px -20px rgb(13 20 48 / .6) }
-  .item .ii { display: grid; place-items: center; flex-shrink: 0; width: 2.3rem; height: 2.3rem; border-radius: 10px; transition: color .3s, background-color .3s }
-  .item .ii svg { width: 19px; height: 19px }
-  .item[aria-selected="true"] .ii { color: var(--a-ink); background: rgb(var(--a) / .1) }
-  .item .lb { font-size: 1.05rem; font-weight: 700; line-height: 1.3 }
-  .item .pg { display: none }
-  .stack { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem }
+  .mais { margin-top: 1.1rem; min-height: 2.75rem; padding: 0 1.15rem; font-size: .92rem }
+  .stack { display: flex; flex-wrap: wrap; gap: .35rem }
   .stack span { font-size: .78rem; font-weight: 700; padding: .2rem .6rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); color: var(--text) }
 
+  /* Abas do palco: botões em linha, em cima do cartão */
+  .items { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .9rem; list-style: none }
+  .item { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem .85rem .3rem .3rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); color: var(--soft); font-size: .88rem; font-weight: 700; white-space: nowrap; cursor: pointer; transition: color .25s, box-shadow .25s }
+  .item:hover { color: var(--ink) }
+  .item[aria-selected="true"] { color: var(--ink); box-shadow: inset 0 0 0 1.5px rgb(var(--a) / .7) }
+  .item .ii { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 99px; transition: color .25s, background-color .25s }
+  .item .ii svg { width: 16px; height: 16px }
+  .item[aria-selected="true"] .ii { color: var(--a-ink); background: rgb(var(--a) / .12) }
   @media (max-width: 1023px) {
-    .svc .wrap { gap: 0 }
-    .svc .copy { display: contents }
-    .svc .stage { order: 4; margin-top: 1.2rem }
-    .svc .result, .svc .stack { order: 5 }
-    .items { flex-direction: row; gap: .5rem; overflow-x: auto; scrollbar-width: none; margin-inline: -1.25rem; padding: 0 1.25rem .25rem; scroll-snap-type: x proximity }
+    .items { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -1.25rem; padding: 0 1.25rem .2rem; scroll-padding-inline: 1.25rem; scroll-snap-type: x proximity }
     .items::-webkit-scrollbar { display: none }
     .items li { flex-shrink: 0; scroll-snap-align: start }
-    .item { width: auto; gap: .45rem; padding: .35rem .9rem .35rem .35rem; border-radius: 99px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line) }
-    .item[aria-selected="true"] { box-shadow: inset 0 0 0 1px rgb(var(--a) / .6) }
-    .item .ii { width: 2rem; height: 2rem; border-radius: 99px }
-    .item .lb { font-size: .9rem; white-space: nowrap }
-    .item .pg { display: block; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: rgb(var(--a)) }
-    .svc.auto .item[aria-selected="true"] .pg { animation: story 4200ms linear forwards }
   }
-  @keyframes story { to { width: 100% } }
 
-  /* Palco: cartões de interface ligados à lista */
-  .grid { display: grid; gap: .9rem; grid-template-columns: repeat(2, minmax(0, 1fr)) }
-  .grid.g-ig { grid-template-columns: .9fr 1.1fr }
-  .ui { position: relative; min-width: 0; padding: 1rem 1.05rem; border-radius: 16px; background: var(--surface); box-shadow: 0 0 0 1px var(--line), 0 24px 50px -34px rgb(13 20 48 / .55); font-size: .84rem; color: var(--text); cursor: pointer; transition: opacity .5s var(--ease), transform .6s var(--ease), box-shadow .5s }
-  .ui.on { box-shadow: 0 0 0 1px rgb(var(--a) / .65), 0 0 0 6px rgb(var(--a) / .08), 0 30px 60px -34px rgb(var(--a) / .6) }
-  .ui.tall { grid-row: span 2 }
+  /* Palco: um cartão por vez, numa área do tamanho do maior para a página não pular */
+  .grid { display: grid; align-content: start }
+  @media (min-width: 1024px) { .grid { min-height: var(--slot, auto) } }
+  .ui { position: relative; min-width: 0; padding: 1rem 1.05rem; border-radius: 16px; background: var(--surface); box-shadow: 0 0 0 1px rgb(var(--a) / .35), 0 24px 50px -34px rgb(13 20 48 / .55); font-size: .84rem; color: var(--text) }
+  .grid > .ui:not(.on) { display: none }
+  .js .grid > .ui.on { animation: aparece .45s var(--ease) }
+  @keyframes aparece { from { opacity: 0; transform: translateY(6px) } }
   .ui.flush { padding: .45rem }
-  @media (min-width: 1024px) {
-    .stage.has-on .ui:not(.on) { opacity: .5 }
-    .ui.on { transform: translateY(-3px) }
-  }
-  @media (max-width: 1023px) {
-    .grid, .grid.g-ig { grid-template-columns: minmax(0, 1fr) }
-    .grid > .ui { grid-column: auto; grid-row: auto }
-    .grid > .ui:not(.on) { display: none }
-  }
-  .wide { grid-column: 1 / -1 }
+
+  /* Detalhes do projeto (modal) */
+  html:has(dialog[open]) { overflow: hidden }
+  .det { width: min(56rem, calc(100% - 2rem)); max-height: min(88vh, 54rem); margin: auto; padding: 0; overflow: auto; border: 0; border-radius: 20px; background: var(--surface); color: var(--text); box-shadow: 0 40px 90px -30px rgb(13 20 48 / .55); --a-ink: color-mix(in srgb, rgb(var(--a)) 72%, #000) }
+  .det::backdrop { background: rgb(13 20 48 / .5); backdrop-filter: blur(3px) }
+  .det[open] { animation: aparece .3s var(--ease) }
+  .det .hd { position: sticky; top: 0; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.3rem 1.5rem 1rem; background: var(--surface); border-bottom: 1px solid var(--line) }
+  .det .hd small { font-family: var(--mono); font-weight: 700; color: var(--a-ink) }
+  .det h3 { margin-top: .1rem; font-size: 1.6rem; font-weight: 800; line-height: 1.1 }
+  .det .hd p { margin-top: .25rem; font-weight: 600; color: var(--soft) }
+  .det .x { display: grid; place-items: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--line); cursor: pointer; font-size: 1.35rem; line-height: 1 }
+  .det .x:hover { background: var(--bg) }
+  .det .bd { display: grid; gap: 1.3rem 2.2rem; padding: 1.3rem 1.5rem 1.7rem }
+  @media (min-width: 760px) { .det .bd { grid-template-columns: repeat(2, minmax(0, 1fr)) } .det .full { grid-column: 1 / -1 } }
+  .det h4 { font-family: var(--sans); font-size: .74rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--a-ink) }
+  .det h4 + * { margin-top: .45rem }
+  .det .bd p, .det .bd li { font-size: .95rem }
+  .det ul { display: grid; gap: .3rem; padding-left: 1.1rem }
+  .det .nota { font-size: .82rem; color: var(--soft) }
+  @media (max-width: 640px) { .det { width: 100%; max-width: 100%; height: 100%; max-height: 100%; border-radius: 0 } }
   .ut { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .7rem; font-size: .8rem; font-weight: 800; color: var(--ink) }
   .ut em { font-style: normal; font-weight: 600; font-size: .72rem; color: var(--soft) }
   .ut .dot { display: inline-block; width: .45rem; height: .45rem; margin-right: .4rem; border-radius: 99px; background: rgb(var(--green)) }
@@ -175,7 +174,7 @@
   .tg small { display: block; margin-top: .25rem; font-size: .68rem; color: var(--soft); text-align: right }
 
   /* Celular do Instagram */
-  .phone { max-width: 15rem; margin-inline: auto; padding: .55rem; border-radius: 2rem; background: var(--ink); box-shadow: 0 30px 60px -30px rgb(13 20 48 / .7) }
+  .phone { max-width: 12rem; margin-inline: auto; padding: .55rem; border-radius: 2rem; background: var(--ink); box-shadow: 0 30px 60px -30px rgb(13 20 48 / .7) }
   .phone .scr { border-radius: 1.55rem; overflow: hidden; background: var(--ink) }
   .phone video { display: block; width: 100%; aspect-ratio: 720 / 1760; object-fit: cover }
   .ui.tall .demo-note { text-align: center }
@@ -282,21 +281,22 @@
     <div class="wrap">
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-kanban"/></svg></span><span class="n">Projeto 01</span><span class="ln"></span></p>
-        <h2 data-reveal><em>My Italy OS</em>: CRM com IA para casamentos na Itália</h2>
+        <h2 data-reveal><em>My Italy OS</em></h2>
+        <p class="sub" data-reveal>CRM com IA para uma assessoria de casamentos em Roma</p>
         <p class="tag">Cliente real · React + Supabase + Claude API</p>
-        <p class="lead" data-reveal style="--d:80ms">Uma assessoria em Roma organiza cerca de 15 casamentos por ano, com 10 a 15 fornecedores cada. A dona tinha desistido do ClickUp por ser complexo demais. Construí do zero um sistema com uma ação principal por tela, e a IA cuida do trabalho repetitivo de texto e documento.</p>
-        <ul class="items" role="tablist" aria-label="My Italy OS" data-reveal style="--d:140ms">
-          <li><button class="item" role="tab" data-item="tour"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">O sistema e a IA em 2 minutos</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="ia"><span class="ii"><svg><use href="#i-spark"/></svg></span><span class="lb">IA lê contratos em PDF</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="travas"><span class="ii"><svg><use href="#i-lock"/></svg></span><span class="lb">Travas e revisão humana</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="portal"><span class="ii"><svg><use href="#i-heart"/></svg></span><span class="lb">Portal dos noivos (PT/EN)</span><span class="pg"></span></button></li>
-        </ul>
-        <div class="result" data-reveal><small>Onde entra a IA</small>Rascunho de e-mail com o contexto da conversa (Claude Haiku, barato) e leitura de proposta e contrato em PDF (Claude Sonnet, mais preciso). A IA preenche, a equipe confere e decide.</div>
-        <div class="stack"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Claude API</span><span>Gmail, Drive e Agenda</span><span>Playwright</span></div>
+        <p class="lead" data-reveal style="--d:80ms">A dona tinha desistido do ClickUp. Construí um sistema com uma ação principal por tela, e a IA cuida do trabalho de texto e documento.</p>
+        <div class="result" data-reveal><small>Destaque</small>A IA lê o contrato do fornecedor e transforma os prazos em tarefas do checklist, com a equipe revisando.</div>
+        <button class="btn btn-ghost mais" type="button" data-abre="det-my-italy-os">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
-        <div class="grid">
-          <div class="ui wide flush" data-for="tour">
+        <ul class="items" role="tablist" aria-label="My Italy OS">
+          <li><button class="item" role="tab" aria-selected="true" data-item="tour"><span class="ii"><svg><use href="#i-window"/></svg></span>Vídeo: sistema e IA</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="ia"><span class="ii"><svg><use href="#i-spark"/></svg></span>IA lê contratos</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="travas"><span class="ii"><svg><use href="#i-lock"/></svg></span>Travas da IA</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="portal"><span class="ii"><svg><use href="#i-heart"/></svg></span>Portal dos noivos</button></li>
+        </ul>
+        <div class="grid" style="--slot:29.5rem">
+          <div class="ui flush on" data-for="tour">
             <div class="win">
               <div class="bar"><span class="dots"><i></i><i></i><i></i></span>my-italy-os · dados de demonstração</div>
               <video src="videos/my-italy-os-tour.mp4" poster="img/my-italy-os-poster.jpg" controls muted playsinline preload="none"></video>
@@ -317,7 +317,7 @@
             <div class="row"><span>Envio ao casal</span><span class="chip">Só após revisão</span></div>
             <div class="row"><span>Cada uso registrado</span><span class="chip">modelo · tokens</span></div>
           </div>
-          <div class="ui wide" data-for="portal">
+          <div class="ui" data-for="portal">
             <div class="ut">Portal dos noivos<em>o que o casal vê</em></div>
             <div class="row"><span><b>Aprovar a proposta</b> · Flores &amp; Decoração</span><span class="chip hot">Revisar</span></div>
             <div class="row"><span>Parcela 3/6 · vence em 15/10</span><span class="num">€ 1.139,00</span></div>
@@ -333,21 +333,22 @@
     <div class="wrap">
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-chat"/></svg></span><span class="n">Projeto 02</span><span class="ln"></span></p>
-        <h2 data-reveal><em>Automação</em> de Instagram da Cubana, loja de moda</h2>
-        <p class="tag">Em produção no @usocubana_ · n8n + PostgreSQL + API oficial da Meta</p>
-        <p class="lead" data-reveal style="--d:80ms">Quem pergunta o preço e não recebe resposta não compra. O fluxo responde na hora todo comentário, story, anúncio e DM com o produto daquele post. Se a pessoa continua a conversa no Direct, uma LLM responde as dúvidas e qualifica o interesse, e a equipe só entra quando o cliente quer comprar.</p>
-        <ul class="items" role="tablist" aria-label="Automação de Instagram" data-reveal style="--d:140ms">
-          <li><button class="item" role="tab" data-item="comentario"><span class="ii"><svg><use href="#i-ig"/></svg></span><span class="lb">Teste ao vivo: comentário vira DM</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="dm"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">O que o fluxo faz por dentro</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="catalogo"><span class="ii"><svg><use href="#i-tag"/></svg></span><span class="lb">Catálogo que a equipe edita</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="fila"><span class="ii"><svg><use href="#i-queue"/></svg></span><span class="lb">Fila de atendimento humano</span><span class="pg"></span></button></li>
-        </ul>
-        <div class="result" data-reveal><small>Resultado</small>Num único Reel da loja (230 mil seguidores), mais de 2.200 comentários. Quem pergunta o preço recebe a DM com o produto daquele post em cerca de 15 segundos, sem ninguém da equipe.</div>
-        <div class="stack"><span>n8n</span><span>PostgreSQL</span><span>Meta Graph API</span><span>LLM</span><span>JavaScript</span><span>Webhooks</span></div>
+        <h2 data-reveal><em>Automação</em> de Instagram</h2>
+        <p class="sub" data-reveal>n8n em produção na Cubana, loja de moda com 230 mil seguidores</p>
+        <p class="tag">Em produção · n8n + PostgreSQL + API da Meta + LLM</p>
+        <p class="lead" data-reveal style="--d:80ms">Quem pergunta o preço recebe na hora a DM com o produto daquele post. Se continua no Direct, uma LLM responde e qualifica.</p>
+        <div class="result" data-reveal><small>Resultado</small>Num único Reel, mais de 2.200 comentários. A DM chega em cerca de 15 s, sem ninguém da equipe.</div>
+        <button class="btn btn-ghost mais" type="button" data-abre="det-instagram">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
-        <div class="grid g-ig">
-          <div class="ui tall" data-for="comentario">
+        <ul class="items" role="tablist" aria-label="Automação de Instagram">
+          <li><button class="item" role="tab" aria-selected="true" data-item="comentario"><span class="ii"><svg><use href="#i-ig"/></svg></span>Teste ao vivo</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="dm"><span class="ii"><svg><use href="#i-list"/></svg></span>Por dentro</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="catalogo"><span class="ii"><svg><use href="#i-tag"/></svg></span>Catálogo</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="fila"><span class="ii"><svg><use href="#i-queue"/></svg></span>Fila humana</button></li>
+        </ul>
+        <div class="grid" style="--slot:34.5rem">
+          <div class="ui on" data-for="comentario">
             <div class="phone"><div class="scr">
               <video src="videos/instagram-ao-vivo.mp4" poster="img/instagram-poster.jpg" controls muted playsinline preload="none" aria-label="Gravação da tela: comentário no Reel da loja e a DM automática chegando"></video>
             </div></div>
@@ -369,7 +370,7 @@
             <div class="row"><span><b>Vestido Linho</b><small>P ao GG · Areia</small></span><span class="chip hot">Esgotado</span></div>
             <p class="demo-note">A equipe cadastra a peça a partir do próprio post ou story.</p>
           </div>
-          <div class="ui wide" data-for="fila">
+          <div class="ui" data-for="fila">
             <div class="ut">Fila de atendimento humano<em>atualiza a cada 15 s</em></div>
             <div class="row"><span><b>@ana.compras</b> · Comprar agora</span><span class="chip hot">🔥 Comprar agora</span></div>
             <div class="row"><span><b>@joao.h</b> · Tem no tamanho M?</span><span class="chip">📸 Story · 12 min</span></div>
@@ -386,22 +387,23 @@
     <div class="wrap">
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-route"/></svg></span><span class="n">Projeto 03</span><span class="ln"></span></p>
-        <h2 data-reveal><em>Smart Reply</em>: a automação virou produto</h2>
+        <h2 data-reveal><em>Smart Reply</em></h2>
+        <p class="sub" data-reveal>A automação de Instagram virou produto para várias lojas</p>
         <p class="tag">Em produção · Next.js + PostgreSQL + API da Meta</p>
-        <p class="lead" data-reveal style="--d:80ms">Montar a automação de cada loja à mão não escala. No Smart Reply, a loja conecta o Instagram em um clique pelo login oficial da Meta. Todos os eventos chegam num ponto só e cada um segue para a automação certa.</p>
-        <ul class="items" role="tablist" aria-label="Smart Reply" data-reveal style="--d:140ms">
-          <li><button class="item" role="tab" data-item="video-sr"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">O painel em 1 minuto</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="conectar"><span class="ii"><svg><use href="#i-plug"/></svg></span><span class="lb">Conexão em um clique</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="webhook"><span class="ii"><svg><use href="#i-route"/></svg></span><span class="lb">Um receptor para todos os eventos</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">Automações por conta</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="alerta"><span class="ii"><svg><use href="#i-bell"/></svg></span><span class="lb">Aviso quando algo quebra</span><span class="pg"></span></button></li>
-        </ul>
-        <div class="result" data-reveal><small>Resultado</small>App aprovado pela Meta na primeira análise, com as 6 permissões em acesso avançado. Em produção desde outubro de 2026.</div>
-        <div class="stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>pgcrypto</span><span>Meta Graph API</span><span>Vitest</span></div>
+        <p class="lead" data-reveal style="--d:80ms">A loja conecta o Instagram em um clique pelo login oficial da Meta, e cada evento segue para a automação certa.</p>
+        <div class="result" data-reveal><small>Resultado</small>App aprovado pela Meta na primeira análise, com 6 permissões em acesso avançado.</div>
+        <button class="btn btn-ghost mais" type="button" data-abre="det-smart-reply">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
-        <div class="grid">
-          <div class="ui wide flush" data-for="video-sr">
+        <ul class="items" role="tablist" aria-label="Smart Reply">
+          <li><button class="item" role="tab" aria-selected="true" data-item="video-sr"><span class="ii"><svg><use href="#i-window"/></svg></span>Vídeo: o painel</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="conectar"><span class="ii"><svg><use href="#i-plug"/></svg></span>Conexão</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="webhook"><span class="ii"><svg><use href="#i-route"/></svg></span>Webhooks</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span>Automações</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="alerta"><span class="ii"><svg><use href="#i-bell"/></svg></span>Alertas</button></li>
+        </ul>
+        <div class="grid" style="--slot:29.5rem">
+          <div class="ui flush on" data-for="video-sr">
             <div class="win">
               <div class="bar"><span class="dots"><i></i><i></i><i></i></span>smart reply · modo demonstração, contas fictícias</div>
               <video src="videos/smartreply.mp4" poster="img/smartreply-poster.jpg" controls muted playsinline preload="none"></video>
@@ -420,13 +422,13 @@
             <div class="row"><span class="ok-ic no">×</span>Reenvio duplicado descartado</div>
             <div class="row"><span class="ok-ic">✓</span>Repassado à automação da loja<span class="num">0,12 s</span></div>
           </div>
-          <div class="ui wide" data-for="regras">
+          <div class="ui" data-for="regras">
             <div class="ut">Automação da conta<span class="chip ok">Ligada</span></div>
             <div class="row"><span><b>Quando:</b> comentário com "valor", "preço" ou "quanto"</span></div>
             <div class="row"><span><b>Faz:</b> responde em público e manda a DM com o produto e os botões</span></div>
             <div class="row"><span><b>Destino:</b> motor próprio ou o n8n do cliente</span><span class="chip">por conta</span></div>
           </div>
-          <div class="ui wide" data-for="alerta">
+          <div class="ui" data-for="alerta">
             <div class="ut">Alerta no Telegram<em>verificação diária</em></div>
             <div class="tg">⚠️ O token da <b>@loja.exemplo</b> parou de funcionar. Peça para a loja reconectar a conta.<small>09:00</small></div>
           </div>
@@ -440,22 +442,23 @@
     <div class="wrap">
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-search"/></svg></span><span class="n">Projeto 04</span><span class="ln"></span></p>
-        <h2 data-reveal><em>Smart Lead</em>: agente que encontra e qualifica clientes</h2>
-        <p class="tag">Uso interno · Next.js + PostgreSQL + Claude API</p>
-        <p class="lead" data-reveal style="--d:80ms">Prospectar empresas que precisam de um site novo levava horas por lead. O agente busca, audita, pontua e escreve a abordagem. Eu só reviso e envio.</p>
-        <ul class="items" role="tablist" aria-label="Smart Lead" data-reveal style="--d:140ms">
-          <li><button class="item" role="tab" data-item="video-sl"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">O agente em 1min30</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="busca"><span class="ii"><svg><use href="#i-search"/></svg></span><span class="lb">Busca no Google Maps</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="score"><span class="ii"><svg><use href="#i-gauge"/></svg></span><span class="lb">Auditoria e score</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="ficha"><span class="ii"><svg><use href="#i-spark"/></svg></span><span class="lb">Ficha de venda com IA</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="demo"><span class="ii"><svg><use href="#i-window"/></svg></span><span class="lb">Site de demonstração</span><span class="pg"></span></button></li>
-        </ul>
-        <div class="result" data-reveal><small>Onde entra a IA</small>Regras grátis resolvem a maior parte (franquia, site ausente, lentidão). O Claude só entra no que pede julgamento: os casos em dúvida e a ficha de venda.</div>
-        <div class="stack"><span>Next.js</span><span>PostgreSQL</span><span>Drizzle</span><span>Fila (pg-boss)</span><span>Claude API</span><span>Google Places</span></div>
+        <h2 data-reveal><em>Smart Lead</em></h2>
+        <p class="sub" data-reveal>Agente que encontra e qualifica clientes para a minha empresa</p>
+        <p class="tag">Ferramenta interna · Next.js + PostgreSQL + Claude API</p>
+        <p class="lead" data-reveal style="--d:80ms">Busca no Google Maps, audita o site, dá um score, e o Claude escreve a abordagem. Eu só reviso e envio.</p>
+        <div class="result" data-reveal><small>Resultado</small>Ficha de venda e site de demonstração prontos em cerca de 1 minuto por lead.</div>
+        <button class="btn btn-ghost mais" type="button" data-abre="det-smart-lead">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
-        <div class="grid">
-          <div class="ui wide flush" data-for="video-sl">
+        <ul class="items" role="tablist" aria-label="Smart Lead">
+          <li><button class="item" role="tab" aria-selected="true" data-item="video-sl"><span class="ii"><svg><use href="#i-window"/></svg></span>Vídeo: o agente</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="busca"><span class="ii"><svg><use href="#i-search"/></svg></span>Busca</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="score"><span class="ii"><svg><use href="#i-gauge"/></svg></span>Score</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="ficha"><span class="ii"><svg><use href="#i-spark"/></svg></span>Ficha com IA</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="demo"><span class="ii"><svg><use href="#i-window"/></svg></span>Site demo</button></li>
+        </ul>
+        <div class="grid" style="--slot:29.5rem">
+          <div class="ui flush on" data-for="video-sl">
             <div class="win">
               <div class="bar"><span class="dots"><i></i><i></i><i></i></span>smart lead · dados fictícios, ficha escrita pelo Claude</div>
               <video src="videos/smartlead.mp4" poster="img/smartlead-poster.jpg" controls muted playsinline preload="none"></video>
@@ -473,13 +476,13 @@
             <div class="row"><span>Botão de WhatsApp</span><span class="chip hot">Ausente</span></div>
             <div class="row"><span>Instagram ativo</span><span class="chip ok">4,1 mil</span></div>
           </div>
-          <div class="ui wide" data-for="ficha">
+          <div class="ui" data-for="ficha">
             <div class="ut">Ficha de venda<em>escrita pelo Claude</em></div>
             <div class="row"><span>1. O site demora 9 s para abrir no celular, e a maioria desiste antes.</span></div>
             <div class="row"><span>2. Não há como marcar consulta sem ligar.</span></div>
             <div class="row"><span><b>Mensagem:</b> "Oi, Dra. Paula! Vi que a clínica tem ótimas avaliações, mas o site…"</span></div>
           </div>
-          <div class="ui wide" data-for="demo">
+          <div class="ui" data-for="demo">
             <div class="ut">Site de demonstração<span class="chip ok">Aberto pelo lead</span></div>
             <div class="bars"><i style="height:30%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:80%"></i><i style="height:64%"></i><i style="height:95%"></i></div>
             <p class="demo-note">Um clique monta o site do lead com a marca dele, e o sistema avisa quando ele abre o link.</p>
@@ -494,21 +497,22 @@
     <div class="wrap">
       <div class="copy">
         <p class="kicker" data-reveal><span class="ic"><svg><use href="#i-bot"/></svg></span><span class="n">Projeto 05</span><span class="ln"></span></p>
-        <h2 data-reveal><em>Múltiplos agentes</em>, cada um com uma função</h2>
-        <p class="tag">Na minha VPS · Claude, GPT e Gemini · MCP</p>
-        <p class="lead" data-reveal style="--d:80ms">Peço uma tarefa pelo celular e os agentes trabalham como um time: um planeja, outro implementa, outro revisa. Cada um só enxerga o que precisa, e nada chega à produção sem passar por mim.</p>
-        <ul class="items" role="tablist" aria-label="Múltiplos agentes" data-reveal style="--d:140ms">
-          <li><button class="item" role="tab" data-item="papeis"><span class="ii"><svg><use href="#i-bot"/></svg></span><span class="lb">Um papel para cada agente</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="caminho"><span class="ii"><svg><use href="#i-route"/></svg></span><span class="lb">O caminho até a produção</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="acesso"><span class="ii"><svg><use href="#i-lock"/></svg></span><span class="lb">Permissão mínima</span><span class="pg"></span></button></li>
-          <li><button class="item" role="tab" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span><span class="lb">Regras escritas no prompt</span><span class="pg"></span></button></li>
-        </ul>
-        <div class="result" data-reveal><small>Por que modelos diferentes</small>Cada agente usa o modelo que compensa para a tarefa: rápido e barato para operar, mais forte para revisar e decidir. Se um provedor cair, entra o modelo reserva.</div>
-        <div class="stack"><span>Claude</span><span>GPT</span><span>Gemini</span><span>MCP</span><span>n8n</span><span>GitHub</span><span>Docker</span></div>
+        <h2 data-reveal><em>Múltiplos agentes</em></h2>
+        <p class="sub" data-reveal>Um time de IA na minha VPS, cada agente com uma função</p>
+        <p class="tag">Claude, GPT e Gemini · MCP · OpenBot</p>
+        <p class="lead" data-reveal style="--d:80ms">Um planeja, outro implementa, outro revisa. Cada um só enxerga o que precisa, e nada chega à produção sem passar por mim.</p>
+        <div class="result" data-reveal><small>Segurança</small>Banco de produção só leitura, sem root, sem push na branch principal e revisão antes de cada merge.</div>
+        <button class="btn btn-ghost mais" type="button" data-abre="det-agentes">Ver detalhes do projeto <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="stage" data-stage data-reveal style="--d:120ms">
-        <div class="grid">
-          <div class="ui wide" data-for="papeis">
+        <ul class="items" role="tablist" aria-label="Múltiplos agentes">
+          <li><button class="item" role="tab" aria-selected="true" data-item="papeis"><span class="ii"><svg><use href="#i-bot"/></svg></span>Papéis e modelos</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="caminho"><span class="ii"><svg><use href="#i-route"/></svg></span>Até a produção</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="acesso"><span class="ii"><svg><use href="#i-lock"/></svg></span>Permissões</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="regras"><span class="ii"><svg><use href="#i-list"/></svg></span>Regras no prompt</button></li>
+        </ul>
+        <div class="grid" style="--slot:22rem">
+          <div class="ui on" data-for="papeis">
             <div class="ut">Papéis<em>modelo de cada um</em></div>
             <div class="row"><span><b>Arquiteto</b> · planeja as ideias e registra o plano no repositório</span><span class="chip vi">Claude Opus 5.5</span></div>
             <div class="row"><span><b>Administrador da VPS</b> · cuida dos servidores e dos containers</span><span class="chip">GPT-6 Luna</span></div>
@@ -533,7 +537,7 @@
             <div class="row"><span>Containers e deploy</span><span class="chip ok">Só leitura</span></div>
             <div class="row"><span>Branch principal</span><span class="chip hot">Sem push</span></div>
           </div>
-          <div class="ui wide" data-for="regras">
+          <div class="ui" data-for="regras">
             <div class="ut">Trecho do prompt do agente de infraestrutura</div>
             <div class="rules">
               <p class="y"><b>PODE</b>ler logs, checar memória e disco, fazer SELECT</p>
@@ -546,6 +550,128 @@
       </div>
     </div>
   </section>
+
+  <!-- Detalhes de cada projeto -->
+  <dialog class="det" id="det-my-italy-os" aria-labelledby="t-my-italy-os" style="--a:var(--indigo)">
+    <div class="hd"><div><small>Projeto 01</small><h3 id="t-my-italy-os">My Italy OS</h3><p>CRM com IA para uma assessoria de casamentos em Roma</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="bd">
+      <div class="full"><h4>O problema</h4><p>A assessoria organiza cerca de 15 casamentos por ano, com 10 a 15 fornecedores cada. A dona tinha desistido do ClickUp por ser complexo demais.</p></div>
+      <div><h4>O que construí</h4><ul>
+        <li>Funil de leads com qualificação automática</li>
+        <li>Roteiro oficial de 14 fases e marcos M-6 a M-1</li>
+        <li>Contratação de fornecedores, sempre com "com quem está a bola"</li>
+        <li>Financeiro com parcelas, lembretes e atrasos</li>
+        <li>Portal dos noivos em PT/EN</li>
+        <li>Integração com Gmail, Drive e Agenda</li>
+      </ul></div>
+      <div><h4>Onde entra a IA</h4><ul>
+        <li>Lê a proposta em PDF e preenche o cadastro (Claude Sonnet)</li>
+        <li>Lê o contrato e transforma os prazos em tarefas do checklist, com responsável</li>
+        <li>Rascunha e-mails com o contexto da conversa (Claude Haiku, mais barato)</li>
+        <li>Traduz a proposta para os noivos</li>
+      </ul></div>
+      <div><h4>Travas e revisão humana</h4><ul>
+        <li>Dado bancário (IBAN) nunca é extraído</li>
+        <li>Números conferidos contra a fonte</li>
+        <li>Nada vai para o casal sem revisão da equipe</li>
+        <li>Cada uso fica registrado: modelo, tokens e quem pediu</li>
+      </ul></div>
+      <div><h4>Tecnologias</h4><div class="stack"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Edge Functions</span><span>Claude API</span><span>Google OAuth</span><span>Playwright</span><span>pgTAP</span></div></div>
+      <p class="full nota">O vídeo usa dados de demonstração e PDFs fictícios. O nome da equipe foi trocado na tela.</p>
+    </div>
+  </dialog>
+
+  <dialog class="det" id="det-instagram" aria-labelledby="t-instagram" style="--a:var(--green)">
+    <div class="hd"><div><small>Projeto 02</small><h3 id="t-instagram">Automação de Instagram</h3><p>n8n em produção na Cubana, loja de moda com 230 mil seguidores</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="bd">
+      <div class="full"><h4>O problema</h4><p>Com centenas de comentários por post, responder um por um à mão não dá. E quem pergunta o preço e não recebe resposta não compra.</p></div>
+      <div><h4>O que construí</h4><ul>
+        <li>Um fluxo no n8n que recebe todo evento do Instagram (comentário, story, anúncio e DM) e identifica a origem e a intenção</li>
+        <li>Resposta pública com variações e atraso para parecer humana</li>
+        <li>DM com o produto daquele post, puxado do catálogo (preço, tamanhos, cores, esgotado) e com botões de compra</li>
+        <li>Painel de catálogo que a equipe edita a partir dos próprios posts e stories</li>
+        <li>Fila de atendimento humano que prioriza quem tocou em "Comprar agora", com tempo de espera e filtros</li>
+      </ul></div>
+      <div><h4>Onde entra a IA</h4><ul>
+        <li>Se a pessoa continua no Direct, uma LLM responde as dúvidas e qualifica o interesse antes de passar para a equipe</li>
+        <li>Um agente de IA opera o fluxo pelo MCP do n8n, sempre com backup antes de editar</li>
+      </ul><h4 style="margin-top:1.2rem">Travas</h4><ul>
+        <li>"Obrigado" e emoji não reabrem o atendimento</li>
+      </ul></div>
+      <div><h4>Resultado</h4><p>Num único Reel da loja, mais de 2.200 comentários. No teste ao vivo, a DM chegou em cerca de 15 segundos, sem ninguém da equipe.</p></div>
+      <div><h4>Tecnologias</h4><div class="stack"><span>n8n</span><span>PostgreSQL</span><span>Meta Graph API</span><span>LLM</span><span>JavaScript</span><span>Webhooks</span></div></div>
+      <p class="full nota">A gravação é real e foi feita com a autorização da loja. Os perfis de outras pessoas estão desfocados.</p>
+    </div>
+  </dialog>
+
+  <dialog class="det" id="det-smart-reply" aria-labelledby="t-smart-reply" style="--a:var(--orange)">
+    <div class="hd"><div><small>Projeto 03</small><h3 id="t-smart-reply">Smart Reply</h3><p>A automação de Instagram virou produto para várias lojas</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="bd">
+      <div class="full"><h4>O problema</h4><p>Montar a automação de cada loja à mão não escala: o token e o webhook de cada uma eram configurados um a um, e a Meta só aceita um endereço de webhook por app.</p></div>
+      <div><h4>O que construí</h4><ul>
+        <li>Conexão em um clique pelo login oficial da Meta, com token sem expiração e criptografado no banco</li>
+        <li>Um receptor único de webhooks: valida a assinatura da Meta, descarta reenvios e encaminha cada evento para a automação da conta</li>
+        <li>Motor de automações por conta, com gatilhos, palavras, posts, prioridade e editor com prévia da DM</li>
+        <li>Atendimento humano, catálogo e contatos com etiquetas</li>
+        <li>Verificação diária dos tokens, com alerta no Telegram</li>
+      </ul></div>
+      <div><h4>Como a IA entra</h4><ul>
+        <li>Construído com Claude Code a partir de planos escritos e testes</li>
+        <li>Os agentes arquiteto, desenvolvedor e revisor trabalham no repositório (projeto 05)</li>
+        <li>Próximo passo planejado: uma resposta com IA usando o catálogo, com limite de uso</li>
+      </ul></div>
+      <div><h4>Resultado</h4><p>App aprovado pela Meta na primeira análise, com as 6 permissões em acesso avançado. Em produção desde outubro de 2026.</p></div>
+      <div><h4>Tecnologias</h4><div class="stack"><span>Next.js 15</span><span>TypeScript</span><span>PostgreSQL</span><span>pgcrypto</span><span>Meta Graph API</span><span>Vitest</span><span>Docker</span></div></div>
+      <p class="full nota">O vídeo roda em modo demonstração: contas e tokens fictícios e API da Meta simulada. O comentário que aparece chegando é um webhook de teste.</p>
+    </div>
+  </dialog>
+
+  <dialog class="det" id="det-smart-lead" aria-labelledby="t-smart-lead" style="--a:var(--violet)">
+    <div class="hd"><div><small>Projeto 04</small><h3 id="t-smart-lead">Smart Lead</h3><p>Agente que encontra e qualifica clientes para a minha empresa</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="bd">
+      <div class="full"><h4>O problema</h4><p>Prospectar empresas que precisam de um site novo levava horas por lead: achar a empresa, abrir o site, testar, entender o negócio e escrever a abordagem.</p></div>
+      <div><h4>O que construí</h4><ul>
+        <li>Busca por nicho, cidade e bairro no Google Maps, com limite de custo por mês</li>
+        <li>Auditoria do site (velocidade, segurança, WhatsApp, pixel) e um score explicado ("Por que 73?")</li>
+        <li>Franquias e redes separadas automaticamente</li>
+        <li>Site de demonstração com a marca do lead, em 3 estilos, e aviso quando ele abre o link</li>
+        <li>Funil e indicadores da prospecção</li>
+      </ul></div>
+      <div><h4>Onde entra a IA</h4><ul>
+        <li>Regras grátis resolvem a maior parte; o Claude só entra no que pede julgamento</li>
+        <li>Ficha de venda: gancho, 3 problemas com prova da auditoria, pontos fortes e a mensagem de WhatsApp</li>
+        <li>Classifica os casos em dúvida (franquia ou independente)</li>
+      </ul><h4 style="margin-top:1.2rem">Travas</h4><ul>
+        <li>Nenhuma mensagem sai sozinha: eu reviso e edito antes de enviar</li>
+      </ul></div>
+      <div><h4>Resultado</h4><p>Ficha de venda e site de demonstração prontos em cerca de 1 minuto por lead, contra horas no processo manual.</p></div>
+      <div><h4>Tecnologias</h4><div class="stack"><span>Next.js</span><span>PostgreSQL</span><span>Drizzle</span><span>Fila (pg-boss)</span><span>Claude API</span><span>Google Places</span><span>PageSpeed</span></div></div>
+      <p class="full nota">O vídeo usa dados fictícios num banco local. A ficha foi escrita pelo Claude na hora da gravação.</p>
+    </div>
+  </dialog>
+
+  <dialog class="det" id="det-agentes" aria-labelledby="t-agentes" style="--a:var(--teal)">
+    <div class="hd"><div><small>Projeto 05</small><h3 id="t-agentes">Múltiplos agentes</h3><p>Um time de IA na minha VPS, cada agente com uma função</p></div><button class="x" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="bd">
+      <div class="full"><h4>Como funciona</h4><p>Peço uma tarefa pelo celular e os agentes trabalham como um time no OpenBot: o arquiteto escreve o plano no repositório, o desenvolvedor implementa numa branch, o revisor audita o pull request e eu aprovo o merge.</p></div>
+      <div><h4>Papéis e modelos</h4><ul>
+        <li>Arquiteto: Claude Opus 5.5</li>
+        <li>Administrador da VPS: GPT-6 Luna</li>
+        <li>Desenvolvedor: Claude Sonnet 5.5</li>
+        <li>Revisor de código: Claude Haiku 5.5</li>
+        <li>Engenheiro sênior, para bug difícil: Claude Opus 5.5</li>
+        <li>Operador de cada automação: Gemini 3.8 Flash, um por cliente</li>
+      </ul></div>
+      <div><h4>Por que modelos diferentes</h4><p>Cada agente usa o modelo que compensa para a tarefa: rápido e barato para operar, mais forte para planejar, revisar e decidir. Se um provedor cair, entra o modelo reserva.</p></div>
+      <div><h4>Segurança</h4><ul>
+        <li>Banco de produção só leitura, por um usuário dedicado, sem acesso à tabela de chaves</li>
+        <li>Usuário sem root; containers e deploy só leitura</li>
+        <li>Sem push na branch principal: tudo passa por pull request</li>
+        <li>Regras no prompt: o que pode, o que só com "pode" e o que é proibido</li>
+      </ul></div>
+      <div><h4>Tecnologias</h4><div class="stack"><span>OpenBot</span><span>Claude</span><span>GPT</span><span>Gemini</span><span>MCP</span><span>n8n</span><span>GitHub</span><span>Docker</span></div></div>
+    </div>
+  </dialog>
 
   <section id="sobre" class="plain">
     <div class="wrap">
@@ -579,61 +705,55 @@
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .12 })
   document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el))
 
-  // Cada bloco: a lista acende o cartão com o mesmo data-for e os itens se revezam sozinhos.
-  // O mouse em cima (ou o vídeo tocando) pausa; no celular, deslizar o palco troca de item.
+  // Cada bloco: os botões trocam o cartão do palco, um por vez. Trocar pausa o vídeo que estava tocando.
+  // Setas do teclado andam entre os botões; no celular, deslizar o palco troca de cartão.
   document.querySelectorAll('[data-block]').forEach((sec) => {
     const btns = [...sec.querySelectorAll('[data-item]')]
     const list = sec.querySelector('.items')
     const stage = sec.querySelector('[data-stage]')
     const cards = [...stage.querySelectorAll('[data-for]')]
-    let idx = 0, timer = 0, hold = false, vis = false
-    const stop = () => { clearTimeout(timer); sec.classList.remove('auto') }
-    const schedule = () => {
-      stop()
-      if (reduced || hold || !vis) return
-      void sec.offsetWidth; sec.classList.add('auto')
-      timer = setTimeout(() => go(idx + 1), 4200)
-    }
-    const go = (i) => {
+    let idx = 0
+    const go = (i, foco, rolar = true) => {
       idx = (i + btns.length) % btns.length
       const id = btns[idx].dataset.item
-      btns.forEach((b, j) => b.setAttribute('aria-selected', String(j === idx)))
-      cards.forEach((c) => c.classList.toggle('on', c.dataset.for === id))
-      stage.classList.add('has-on')
-      if (list.scrollWidth > list.clientWidth + 1) {
+      btns.forEach((b, j) => { b.setAttribute('aria-selected', String(j === idx)); b.tabIndex = j === idx ? 0 : -1 })
+      cards.forEach((c) => {
+        const on = c.dataset.for === id
+        c.classList.toggle('on', on)
+        if (!on) c.querySelectorAll('video').forEach((v) => v.pause())
+      })
+      if (foco) btns[idx].focus()
+      if (rolar && list.scrollWidth > list.clientWidth + 1) {
         const lr = list.getBoundingClientRect(), br = btns[idx].getBoundingClientRect()
         list.scrollTo({ left: list.scrollLeft + (br.left - lr.left) - (lr.width - br.width) / 2, behavior: reduced ? 'auto' : 'smooth' })
       }
-      schedule()
     }
-    let ht = 0
-    const hoverTo = (i) => { clearTimeout(ht); ht = setTimeout(() => { if (i !== idx) go(i) }, 120) }
     btns.forEach((b, i) => {
       b.addEventListener('click', () => go(i))
-      b.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hoverTo(i) })
-      b.addEventListener('pointerleave', () => clearTimeout(ht))
-    })
-    cards.forEach((c) => {
-      const owner = () => btns.findIndex((b) => b.dataset.item === c.dataset.for)
-      c.addEventListener('click', () => { const i = owner(); if (i >= 0 && i !== idx) go(i) })
-      c.addEventListener('pointerenter', (e) => { const i = owner(); if (e.pointerType === 'mouse' && i >= 0) hoverTo(i) })
-    })
-    for (const area of [list, stage]) {
-      area.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hold = true; stop() } })
-      area.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hold = false; schedule() } })
-    }
-    stage.querySelectorAll('video').forEach((v) => {
-      v.addEventListener('play', () => { hold = true; stop() })
-      v.addEventListener('pause', () => { hold = false; schedule() })
+      b.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
+        e.preventDefault(); go(idx + (e.key === 'ArrowRight' ? 1 : -1), true)
+      })
     })
     let tx = 0, ty = 0
     stage.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY }, { passive: true })
     stage.addEventListener('touchend', (e) => {
+      if (e.target.closest('video')) return
       const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) go(idx + (dx < 0 ? 1 : -1))
     }, { passive: true })
-    new IntersectionObserver(([e]) => { vis = e.isIntersecting; vis ? schedule() : stop() }, { threshold: .35 }).observe(stage)
-    go(0)
+    go(0, false, false)
+  })
+
+  // "Ver detalhes do projeto": abre o modal; fecha no ×, no Esc ou clicando fora. Ao fechar, o foco volta ao botão.
+  document.querySelectorAll('[data-abre]').forEach((b) => {
+    const d = document.getElementById(b.dataset.abre)
+    b.addEventListener('click', () => d.showModal())
+    d.addEventListener('close', () => b.focus())
+  })
+  document.querySelectorAll('dialog.det').forEach((d) => {
+    d.querySelector('[data-fecha]').addEventListener('click', () => d.close())
+    d.addEventListener('click', (e) => { if (e.target === d) d.close() })
   })
 </script>
 </body>
