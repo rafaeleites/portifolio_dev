@@ -267,6 +267,7 @@
   <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
   <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
   <symbol id="i-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 </svg>
 
@@ -336,6 +337,7 @@
           <li><button class="item" role="tab" aria-selected="true" data-item="tour"><span class="ii"><svg><use href="#i-window"/></svg></span>Vídeo: sistema e IA</button></li>
           <li><button class="item" role="tab" aria-selected="false" data-item="ia"><span class="ii"><svg><use href="#i-spark"/></svg></span>IA lê contratos</button></li>
           <li><button class="item" role="tab" aria-selected="false" data-item="travas"><span class="ii"><svg><use href="#i-lock"/></svg></span>Travas da IA</button></li>
+          <li><button class="item" role="tab" aria-selected="false" data-item="testes"><span class="ii"><svg><use href="#i-shield"/></svg></span>Testes antes de subir</button></li>
           <li><button class="item" role="tab" aria-selected="false" data-item="portal"><span class="ii"><svg><use href="#i-heart"/></svg></span>Portal dos noivos</button></li>
         </ul>
         <div class="grid" style="--slot:29.5rem">
@@ -359,6 +361,17 @@
             <div class="row"><span>Números conferidos na fonte</span><span class="chip ok">Ativo</span></div>
             <div class="row"><span>Envio ao casal</span><span class="chip">Só após revisão</span></div>
             <div class="row"><span>Cada uso registrado</span><span class="chip">modelo · tokens</span></div>
+          </div>
+          <div class="ui log" data-for="testes">
+            <div class="ut">Mudança no banco<em>só sobe com tudo verde</em></div>
+            <div class="row"><span class="ok-ic">1</span>Migration versionada, nunca pelo painel da produção</div>
+            <div class="row"><span class="ok-ic">2</span>Teste que falha escrito antes da mudança</div>
+            <div class="row"><span class="ok-ic">3</span>Supabase local, só com dados fictícios</div>
+            <div class="row"><span class="ok-ic">4</span>Testado do zero e em cima da versão no ar</div>
+            <div class="row"><span class="ok-ic">5</span>pgTAP: o que cada papel pode e não pode ver</div>
+            <div class="row"><span class="ok-ic">6</span>Vitest, Playwright, tipos, lint e build</div>
+            <div class="row"><span class="ok-ic">7</span>CI verde no GitHub Actions, e eu publico</div>
+            <p class="demo-note">Criei esse processo depois que mudanças no banco, feitas sem teste, causaram conflitos e erros.</p>
           </div>
           <div class="ui" data-for="portal">
             <div class="ut">Portal dos noivos<em>o que o casal vê</em></div>
@@ -568,11 +581,13 @@
           </div>
           <div class="ui log" data-for="caminho">
             <div class="ut">Mudança no banco ou no código</div>
-            <div class="row"><span class="ok-ic">1</span>Plano escrito no repositório</div>
-            <div class="row"><span class="ok-ic">2</span>Teste no banco de desenvolvimento</div>
-            <div class="row"><span class="ok-ic">3</span>Testes e checagem de tipos</div>
-            <div class="row"><span class="ok-ic">4</span>Revisão do pull request</div>
-            <div class="row"><span class="ok-ic">5</span>Eu aprovo o merge</div>
+            <div class="row"><span class="ok-ic">1</span>Plano escrito no repositório e aprovado por mim</div>
+            <div class="row"><span class="ok-ic">2</span>Teste que falha escrito antes</div>
+            <div class="row"><span class="ok-ic">3</span>Banco local com dados fictícios, do zero e em cima da produção</div>
+            <div class="row"><span class="ok-ic">4</span>Testes, checagem de tipos e build</div>
+            <div class="row"><span class="ok-ic">5</span>Revisão do pull request e CI verde</div>
+            <div class="row"><span class="ok-ic">6</span>Eu aprovo o merge e publico</div>
+            <p class="demo-note">O passo a passo completo está no <a href="#my-italy-os">My Italy OS</a>.</p>
           </div>
           <div class="ui" data-for="acesso">
             <div class="ut">O que cada agente alcança</div>
@@ -621,7 +636,16 @@
         <li>Nada vai para o casal sem revisão da equipe</li>
         <li>Cada uso fica registrado: modelo, tokens e quem pediu</li>
       </ul></div>
-      <div><h4>Tecnologias</h4><div class="stack"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Edge Functions</span><span>Claude API</span><span>Google OAuth</span><span>Playwright</span><span>pgTAP</span></div></div>
+      <div><h4>Testes antes de subir</h4><p>Criei esse processo depois que mudanças no banco, feitas sem teste, causaram conflitos e erros.</p><ul style="margin-top:.45rem">
+        <li>Toda mudança no banco é migration versionada, nunca feita pelo painel da produção</li>
+        <li>O teste que falha é escrito antes da mudança</li>
+        <li>Roda primeiro num Supabase local, igual à produção na estrutura e só com dados fictícios</li>
+        <li>Testado do zero e em cima da versão que está no ar, o mesmo caminho do deploy</li>
+        <li>pgTAP confere o que cada papel pode e não pode ver: um casal nunca vê os dados de outro</li>
+        <li>Vitest nas regras de negócio e Playwright nos fluxos críticos</li>
+        <li>O CI no GitHub Actions roda tudo de novo. Só sobe com tudo verde, e quem publica sou eu</li>
+      </ul></div>
+      <div class="full"><h4>Tecnologias</h4><div class="stack"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Edge Functions</span><span>Claude API</span><span>Google OAuth</span><span>Vitest</span><span>Playwright</span><span>pgTAP</span><span>GitHub Actions</span></div></div>
       <p class="full nota">O vídeo usa dados de demonstração e PDFs fictícios. O nome da equipe foi trocado na tela.</p>
     </div>
   </dialog>
